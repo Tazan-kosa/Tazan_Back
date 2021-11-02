@@ -1,0 +1,19 @@
+GET https://blog.naver.com/PostView.naver?blogId=minhae9191&logNo=222491332798&redirect=Dlog&widgetTypeCall=true&topReferer=https%3A%2F%2Fwww.myro.co.kr%2F&directAccess=false
+Accept: application/json
+
+###
+GET https://blog.naver.com/minhae9191/222491332798
+Accept: application/json
+
+###
+POST http://localhost:80/login
+Content-Type: application/x-www-form-urlencoded
+
+id=99&content=new-element
+username=qkrtndh5@naver.com&password=1234
+
+###
+GET http://kosa3.iptime.org:50201/testdb
+Accept: application/json
+
+###
