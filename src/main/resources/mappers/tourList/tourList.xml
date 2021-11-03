@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.testback.DAO.tourListDAO">
+<mapper namespace="ion.kosa.TazanBack.DAO.tourListDAO">
     <select id="selectAll" resultType="tourItemVO">
         select * from Tour
     </select>
-    <select id="selectTopFour" resultType="com.example.testback.VO.tourItemVO">
+    <select id="selectTopFour" resultType="ion.kosa.TazanBack.VO.tourItemVO">
         select * from (select * from Tour order by Likes desc) where  ROWNUM &lt;= 4
     </select>
-    <select id="selectKeyword" resultType="com.example.testback.VO.tourItemVO" parameterType="String">
+    <select id="selectKeyword" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="String">
         select * from Tour where Address like '%'||#{keyword}||'%' or TourRegion like '%'||#{keyword}||'%'
     </select>
-    <select id="selectDate" resultType="com.example.testback.VO.tourItemVO" parameterType="String">
+    <select id="selectDate" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="String">
         select * from Tour where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})
     </select>
 </mapper>
