@@ -18,8 +18,8 @@ public class User {
 
     @Id//primarykey 등록
     @GeneratedValue(strategy = GenerationType.IDENTITY)//연결된 DB의 너버링 전략을 따라간다는 설정
-    @Column(name = "UserId")
-    private Long userId;//auto_increment
+    @Column(name = "UserID")
+    private Long userID;//auto_increment
 
     @Column(nullable = false,length = 20,unique = true,name = "NickName")//닉네임
     private String nickName;

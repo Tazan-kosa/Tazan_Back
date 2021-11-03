@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String jwtToken = JWT.create()
                 .withSubject("토큰이름")
                 .withExpiresAt(exp)
-                .withClaim("id", principalDetails.getUser().getUserId())
+                .withClaim("id", principalDetails.getUser().getUserID())
                 .withClaim("Name", principalDetails.getUser().getName())
                 .withClaim("nickname",principalDetails.getUser().getNickName())
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
