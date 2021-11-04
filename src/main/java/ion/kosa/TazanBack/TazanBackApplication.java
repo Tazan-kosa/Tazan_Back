@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestbackApplication {
+public class TazanBackApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TestbackApplication.class, args);
+        SpringApplication.run(TazanBackApplication.class, args);
     }
 
 }
