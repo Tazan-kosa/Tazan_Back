@@ -16,4 +16,7 @@
         from Reivew
         where ReviewID = ${reviewID}
     </select>
+    <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
+        select * from Review
+    </select>
 </mapper>

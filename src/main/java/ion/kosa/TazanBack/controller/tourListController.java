@@ -29,7 +29,7 @@ public class tourListController {
     }
 
     //default data return
-    @GetMapping(value = {"/testdb","/search"})
+    @GetMapping(value = {"/tourList","/search"})
     public @ResponseBody
     List<tourItemVO> selectAllTourList(){
         List<tourItemVO> allTourList = service.selectAll();

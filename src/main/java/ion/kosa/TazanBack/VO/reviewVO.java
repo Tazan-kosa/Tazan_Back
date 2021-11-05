@@ -2,6 +2,7 @@ package ion.kosa.TazanBack.VO;
 
 import lombok.Data;
 
+import javax.persistence.Lob;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class reviewVO {
     private Date startDate;
     private Date endDate;
     private Date reviewDate;
-    private List<reviewContentVO> reviewContent;
+    @Lob
+    private String reviewContent;
     private String reviewTitle;
 }
