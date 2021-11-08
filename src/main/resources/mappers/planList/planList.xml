@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ion.kosa.TazanBack.DAO.planDAO">
+    <insert id="planCreate" parameterType="ion.kosa.TazanBack.model.Plan">
+        <selectKey keyProperty="planID" resultType="java.lang.Integer" order="BEFORE">
+            select PlanID_seq.nextval from dual
+        </selectKey>
+
+        insert into TourPlan (PlanID,UserID,Region,StartDate,EndDate,PlanList,PlanSize,PlanDate,PlanTitle)
+        values(${planID},${userID},#{region},#{startDate},#{endDate},#{planList},#{planSize},#{planDate},#{planTitle})
+
+    </insert>
+    <select id="searchTourPlan" resultType="ion.kosa.TazanBack.model.Plan" parameterType="int">
+        select * from TourPlan where PlanID = ${planID}
+    </select>
+</mapper>

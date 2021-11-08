@@ -1,0 +1,97 @@
+package ion.kosa.TazanBack.Service;
+
+import ion.kosa.TazanBack.VO.planVO;
+import ion.kosa.TazanBack.DAO.planDAO;
+import ion.kosa.TazanBack.model.Plan;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+
+@Service
+@RequiredArgsConstructor
+public class planServiceImpl implements planService {
+
+    private final planDAO planDAO;
+
+    @Override
+    public void planCreate(planVO planVO) {
+        planDAO.planCreate(voToData(planVO));
+    }
+
+
+
+    @Override
+    public Plan voToData(planVO planVO) {
+        Plan plan = new Plan();
+
+        plan.setEndDate(planVO.getEndDate());
+        plan.setStartDate(planVO.getStartDate());
+        plan.setPlanDate(new Date());
+        plan.setUserID(planVO.getUserID());
+        plan.setPlanTitle(planVO.getPlanTitle());
+        plan.setRegion(planVO.getRegion());
+        //planList 로직 처리
+        String no = "";
+        String noSize = "";
+        Iterator iterator = planVO.getPlanList().iterator();
+        while(iterator.hasNext()){
+            ArrayList arr = (ArrayList) iterator.next();
+            Iterator iterator1 = arr.iterator();
+            while(iterator1.hasNext()) {
+                String str = Integer.toString((int)iterator1.next());
+                noSize+=str.length();
+                no += str;
+
+            }
+            noSize+="#";
+
+        }
+
+        plan.setPlanList(no);
+        plan.setPlanSize(noSize);
+        return plan;
+    }
+
+    @Override
+    public planVO getPlan(int planID) {
+        return dataToVO(planDAO.searchTourPlan(planID));
+    }
+    @Override
+    public planVO dataToVO(Plan plan) {
+        planVO vo = new planVO();
+        vo.setPlanID(plan.getPlanID());
+        vo.setUserID(plan.getUserID());
+        vo.setRegion(plan.getRegion());
+        vo.setStartDate(plan.getStartDate());
+        vo.setEndDate(plan.getEndDate());
+        vo.setPlanDate(plan.getPlanDate());
+        vo.setPlanTitle(plan.getPlanTitle());
+        String no=plan.getPlanList();
+        String noSize=plan.getPlanSize();
+
+        ArrayList array = new ArrayList();
+        ArrayList subarray = new ArrayList();
+        for(int i=0;i<noSize.length();i++){
+
+            //숫자(사이즈)인 경우
+            if(!noSize.substring(i,i+1).equals("#")) {
+                //사이즈 만큼 숫자 분리해냄
+                String temp = no.substring(0, Integer.parseInt(noSize.substring(i, i + 1)));
+
+                subarray.add(Integer.parseInt(temp));
+
+                no=no.substring(Integer.parseInt(noSize.substring(i, i + 1)));
+            }
+            else{
+                array.add(subarray);
+                subarray = new ArrayList();
+            }
+        }
+        vo.setPlanList(array);
+
+        return vo;
+    }
+}
