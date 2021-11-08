@@ -2,8 +2,10 @@ package ion.kosa.TazanBack.Service;
 
 import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.DAO.planDAO;
+import ion.kosa.TazanBack.VO.tourItemVO;
 import ion.kosa.TazanBack.model.Plan;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -13,6 +15,9 @@ import java.util.*;
 public class planServiceImpl implements planService {
 
     private final planDAO planDAO;
+
+    @Autowired
+    tourListServiceImpl service;
 
     @Override
     public void planCreate(planVO planVO) {
@@ -84,8 +89,8 @@ public class planServiceImpl implements planService {
             if(!noSize.substring(i,i+1).equals("#")) {
                 //사이즈 만큼 숫자 분리해냄
                 String temp = no.substring(0, Integer.parseInt(noSize.substring(i, i + 1)));
-
-                subarray.add(Integer.parseInt(temp));
+                tourItemVO tourItemvo = service.selectTourID(Integer.parseInt(temp));
+                subarray.add(tourItemvo);
 
                 no=no.substring(Integer.parseInt(noSize.substring(i, i + 1)));
             }

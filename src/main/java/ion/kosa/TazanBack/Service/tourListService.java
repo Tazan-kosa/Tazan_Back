@@ -9,4 +9,5 @@ public interface tourListService {
     List<tourItemVO> selectTopFour();
     List<tourItemVO> selectKeyword(String keyword);
     List<tourItemVO> selectDate(String startdate,String enddate);
+    tourItemVO selectTourID(int tourID);
 }

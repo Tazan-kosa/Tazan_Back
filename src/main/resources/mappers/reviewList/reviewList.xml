@@ -17,6 +17,6 @@
         where ReviewID = ${reviewID} And r.userid = t.userid
     </select>
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
-        select * from Review
+        select r.*, t.nickname from Review r, TOURUSER t where r.userid = t.userid
     </select>
 </mapper>

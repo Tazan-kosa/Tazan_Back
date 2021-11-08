@@ -33,4 +33,9 @@ public class tourListServiceImpl implements tourListService{
     public List<tourItemVO> selectDate(String startdate, String enddate) {
         return tourListDAO.selectDate(startdate,enddate);
     }
+
+    @Override
+    public tourItemVO selectTourID(int tourID) {
+        return tourListDAO.selectTourID(tourID);
+    }
 }

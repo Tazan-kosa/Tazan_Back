@@ -15,5 +15,5 @@ public class planVO {
     private Date endDate;
     private Date planDate;
     private String planTitle;
-    private ArrayList planList;
+    private ArrayList<ArrayList<tourItemVO>> planList;
 }
