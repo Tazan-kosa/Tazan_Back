@@ -42,6 +42,7 @@ public class reviewServiceImpl implements  reviewService {
         vo.setPlanID(review.getPlanID());
         vo.setReviewID(review.getReviewID());
         vo.setUserID(review.getUserID());
+        vo.setNickName(review.getNickName());
         return vo;
     }
 

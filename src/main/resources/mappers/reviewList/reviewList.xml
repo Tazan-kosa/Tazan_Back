@@ -12,9 +12,9 @@
 
     </insert>
     <select id="reviewDownload" resultType="ion.kosa.TazanBack.model.Review" parameterType="int">
-        select *
-        from Review
-        where ReviewID = ${reviewID}
+        select r.*, t.nickname
+        from Review r, TOURUSER t
+        where ReviewID = ${reviewID} And r.userid = t.userid
     </select>
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
         select * from Review
