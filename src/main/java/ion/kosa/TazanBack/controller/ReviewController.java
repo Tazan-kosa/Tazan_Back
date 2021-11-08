@@ -35,17 +35,8 @@ public class ReviewController {
 //        return "잘 왔슈";
 //    }
     @PostMapping(value="/review/upload")
-    public void reviewUpload(@RequestBody reviewVO reviewVO){
-//        System.out.println("review data 도착했습니다.");
-//        System.out.println(reviewVO.getPlanID());
-//        System.out.println(reviewVO.getUserID());
-//        System.out.println(reviewVO.getStartDate());
-//        System.out.println(reviewVO.getEndDate());
-//        System.out.println(reviewVO.getReviewDate());
-//        System.out.println(reviewVO.getRegion());
-//        System.out.println(reviewVO.getReviewTitle());
-        reviewServiceImpl.reviewUpload(reviewVO);
-//        return "잘 왔슈";
+    public @ResponseBody int reviewUpload(@RequestBody reviewVO reviewVO){
+        return reviewServiceImpl.reviewUpload(reviewVO);
     }
 
     //list

@@ -5,6 +5,7 @@ import ion.kosa.TazanBack.Service.planServiceImpl;
 import ion.kosa.TazanBack.Service.reviewServiceImpl;
 import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.VO.reviewVO;
+import ion.kosa.TazanBack.model.Plan;
 import ion.kosa.TazanBack.model.Review;
 import lombok.Generated;
 import lombok.Getter;
@@ -32,6 +33,12 @@ public class planController {
     public planVO getPlan(@PathVariable int planID){
 
         return planServiceImpl.getPlan(planID);
+    }
+
+    @GetMapping("/plan/myPlan/{userID}")
+    public @ResponseBody List<Plan> selectMyPlan(@PathVariable int userID){
+
+        return planServiceImpl.selectMyPlan(userID);
     }
 
 

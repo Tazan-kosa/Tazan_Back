@@ -15,4 +15,8 @@
     <select id="searchTourPlan" resultType="ion.kosa.TazanBack.model.Plan" parameterType="int">
         select * from TourPlan where PlanID = ${planID}
     </select>
+
+    <select id="selectMyPlan" resultType="ion.kosa.TazanBack.model.Plan" parameterType="int">
+        select * from TourPlan where UserID = ${userID}
+    </select>
 </mapper>

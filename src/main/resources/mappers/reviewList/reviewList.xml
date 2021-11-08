@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ion.kosa.TazanBack.DAO.reviewDAO">
-    <insert id="reviewUpload" parameterType="ion.kosa.TazanBack.model.Review">
+    <insert id="reviewUpload" parameterType="ion.kosa.TazanBack.model.Review" useGeneratedKeys="true" keyColumn="ReviewID" keyProperty="reviewID">
         <selectKey keyProperty="reviewID" resultType="java.lang.Integer" order="BEFORE">
             select ReviewID_seq.nextval from dual
         </selectKey>
@@ -12,11 +12,11 @@
 
     </insert>
     <select id="reviewDownload" resultType="ion.kosa.TazanBack.model.Review" parameterType="int">
-        select *
-        from Review
-        where ReviewID = ${reviewID}
+        select r.*, t.nickname
+        from Review r, TOURUSER t
+        where ReviewID = ${reviewID} And r.userid = t.userid
     </select>
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
-        select * from Review
+        select r.*, t.nickname from Review r, TOURUSER t where r.userid = t.userid
     </select>
 </mapper>

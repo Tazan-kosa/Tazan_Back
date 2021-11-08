@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface reviewDAO {
     Review reviewDownload(int reviewID);
-    void reviewUpload(Review review);
+    int reviewUpload(Review review);
     List<Review> reviewList();
 }

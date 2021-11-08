@@ -21,8 +21,11 @@ public class reviewServiceImpl implements  reviewService {
     private final reviewDAO reviewDAO;
 
     @Override
-    public void reviewUpload(reviewVO reviewVO) {
-        reviewDAO.reviewUpload(voToData(reviewVO));
+    public int reviewUpload(reviewVO reviewVO) {
+        Review review = voToData(reviewVO);
+        reviewDAO.reviewUpload(review);
+        System.out.println("impl : " + review.getReviewID());
+        return review.getReviewID();
     }
 
     @Override
@@ -42,6 +45,7 @@ public class reviewServiceImpl implements  reviewService {
         vo.setPlanID(review.getPlanID());
         vo.setReviewID(review.getReviewID());
         vo.setUserID(review.getUserID());
+        vo.setNickName(review.getNickName());
         return vo;
     }
 
