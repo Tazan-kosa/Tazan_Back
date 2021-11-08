@@ -27,12 +27,22 @@ public class reviewServiceImpl implements  reviewService {
 
     @Override
     public reviewVO reviewDownload(int reviewID) {
-        return null;
+        return dataToVO(reviewDAO.reviewDownload(reviewID));
     }
 
     @Override
     public reviewVO dataToVO(Review review) {
-        return null;
+        reviewVO vo = new reviewVO();
+        vo.setReviewDate(review.getReviewDate());
+        vo.setEndDate(review.getEndDate());
+        vo.setStartDate(review.getStartDate());
+        vo.setRegion(review.getRegion());
+        vo.setReviewContent(review.getReviewContent());
+        vo.setReviewTitle(review.getReviewTitle());
+        vo.setPlanID(review.getPlanID());
+        vo.setReviewID(review.getReviewID());
+        vo.setUserID(review.getUserID());
+        return vo;
     }
 
     @Override

@@ -4,6 +4,7 @@ package ion.kosa.TazanBack.controller;
 import ion.kosa.TazanBack.Service.reviewServiceImpl;
 import ion.kosa.TazanBack.Service.userServiceImpl;
 import ion.kosa.TazanBack.VO.reviewVO;
+import ion.kosa.TazanBack.VO.tourItemVO;
 import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -52,6 +53,14 @@ public class ReviewController {
     public ResponseEntity reviewDownload(int reviewID) {
         reviewServiceImpl.reviewDownload(reviewID);
         return null;
+    }
+
+    //키워드 검색
+    @GetMapping("/review/{reviewid}")
+    public @ResponseBody
+    reviewVO reviewdetail(@PathVariable int reviewid){
+        System.out.println(reviewid);
+        return reviewServiceImpl.reviewDownload(reviewid);
     }
 
     @GetMapping("/review/reviewList")

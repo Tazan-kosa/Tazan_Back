@@ -13,7 +13,7 @@
     </insert>
     <select id="reviewDownload" resultType="ion.kosa.TazanBack.model.Review" parameterType="int">
         select *
-        from Reivew
+        from Review
         where ReviewID = ${reviewID}
     </select>
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
