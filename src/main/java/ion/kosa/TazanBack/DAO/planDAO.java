@@ -11,4 +11,5 @@ import java.util.List;
 public interface planDAO {
     void planCreate(Plan plan);
     Plan searchTourPlan(int planID);
+    List<Plan> selectMyPlan(int userID);
 }

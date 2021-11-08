@@ -12,4 +12,5 @@ public interface planService {
     planVO dataToVO(Plan plan);
     Plan voToData(planVO planVO);
     planVO getPlan(int planID);
+    List<Plan> selectMyPlan(int userID);
 }

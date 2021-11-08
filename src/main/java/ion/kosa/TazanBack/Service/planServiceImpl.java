@@ -6,9 +6,7 @@ import ion.kosa.TazanBack.model.Plan;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -59,6 +57,12 @@ public class planServiceImpl implements planService {
     public planVO getPlan(int planID) {
         return dataToVO(planDAO.searchTourPlan(planID));
     }
+
+    @Override
+    public List<Plan> selectMyPlan(int userID) {
+        return planDAO.selectMyPlan(userID);
+    }
+
     @Override
     public planVO dataToVO(Plan plan) {
         planVO vo = new planVO();
