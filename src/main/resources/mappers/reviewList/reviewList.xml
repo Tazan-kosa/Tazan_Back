@@ -32,4 +32,9 @@
         delete from Review
         where ReviewID = ${reviewID}
     </delete>
+    <update id="reviewUpdate" parameterType="ion.kosa.TazanBack.model.Review">
+        update Review
+        set PlanID = #{planID},Region = #{region},StartDate = #{startDate} ,EndDate = #{endDate},ReviewDate = #{reviewDate} ,ReviewContent = #{reviewContent} ,ReviewTitle = #{reviewTitle}
+        where ReviewID = #{reviewID}
+    </update>
 </mapper>

@@ -24,7 +24,6 @@ public class reviewServiceImpl implements  reviewService {
     public int reviewUpload(reviewVO reviewVO) {
         Review review = voToData(reviewVO);
         reviewDAO.reviewUpload(review);
-        System.out.println("impl : " + review.getReviewID());
         return review.getReviewID();
     }
 
@@ -84,6 +83,7 @@ public class reviewServiceImpl implements  reviewService {
         newReview.setRegion(reviewVO.getRegion());
         newReview.setPlanID(reviewVO.getPlanID());
         newReview.setUserID(reviewVO.getUserID());
+        newReview.setReviewID(reviewVO.getReviewID());
         newReview.setReviewContent(reviewVO.getReviewContent());
 //        String reviewContentVOS = reviewVO.getReviewContent();
 //        Iterator iterator = reviewContentVOS.iterator();
@@ -125,5 +125,12 @@ public class reviewServiceImpl implements  reviewService {
 //        }
 //        newReview.setReviewContent(content);
         return newReview;
+    }
+
+    @Override
+    public int reviewUpdate(reviewVO reviewVO) {
+        Review review = voToData(reviewVO);
+        reviewDAO.reviewUpdate(review);
+        return review.getReviewID();
     }
 }
