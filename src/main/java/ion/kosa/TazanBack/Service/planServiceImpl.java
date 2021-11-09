@@ -1,5 +1,6 @@
 package ion.kosa.TazanBack.Service;
 
+import ion.kosa.TazanBack.VO.planCreateVO;
 import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.DAO.planDAO;
 import ion.kosa.TazanBack.VO.tourItemVO;
@@ -20,14 +21,14 @@ public class planServiceImpl implements planService {
     tourListServiceImpl service;
 
     @Override
-    public void planCreate(planVO planVO) {
-        planDAO.planCreate(voToData(planVO));
+    public void planCreate(planCreateVO planCreateVO) {
+        planDAO.planCreate(voToData(planCreateVO));
     }
 
 
 
     @Override
-    public Plan voToData(planVO planVO) {
+    public Plan voToData(planCreateVO planVO) {
         Plan plan = new Plan();
 
         plan.setEndDate(planVO.getEndDate());
