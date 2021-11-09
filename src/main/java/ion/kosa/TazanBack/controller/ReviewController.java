@@ -76,4 +76,9 @@ public class ReviewController {
     public void reviewDelete(@PathVariable int reviewID){
         reviewServiceImpl.reviewDelete(reviewID);
     }
+
+    @PutMapping("/review/update")
+    public int reviewUpdate(@RequestBody reviewVO reviewVO){
+        return reviewServiceImpl.reviewUpdate(reviewVO);
+    }
 }
