@@ -23,17 +23,7 @@ public class ReviewController {
 
     private final reviewServiceImpl reviewServiceImpl;
 
-    //    @PostMapping("/review/upload")
-////    public ResponseEntity reviewUpload(@RequestBody reviewVO reviewVO){
-//    public String reviewUpload(@RequestBody reviewVO reviewVO){
-//
-//        //        reviewServiceImpl.reviewUpload(reviewVO);
-//        System.out.println("review data 도착했습니다.");
-//        System.out.println(reviewVO);
-//        MultipartFile file = (MultipartFile)(reviewVO.getReviewContent()).get(1);
-//        System.out.println();
-//        return "잘 왔슈";
-//    }
+
     @PostMapping(value="/review/upload")
     public @ResponseBody int reviewUpload(@RequestBody reviewVO reviewVO){
         return reviewServiceImpl.reviewUpload(reviewVO);
@@ -50,7 +40,6 @@ public class ReviewController {
     @GetMapping("/review/{reviewid}")
     public @ResponseBody
     reviewVO reviewdetail(@PathVariable int reviewid){
-        System.out.println(reviewid);
         return reviewServiceImpl.reviewDownload(reviewid);
     }
 
@@ -58,4 +47,27 @@ public class ReviewController {
     public @ResponseBody List<Review> reviewList() {
         return reviewServiceImpl.reviewList();
     }
+
+    //날짜기반 검색
+    @GetMapping("/review/selectdate/{startdate}/{enddate}")
+    public List<reviewVO> selectdate(@PathVariable String startdate, @PathVariable String enddate){
+        List<reviewVO> selectdate = reviewServiceImpl.selectDate(startdate,enddate);
+        return selectdate;
+    }
+
+    //키워드 검색
+    @GetMapping("/review/search/{keyword}")
+    public @ResponseBody
+    List<reviewVO> search(@PathVariable String keyword){
+        List<reviewVO> keywordTourList = reviewServiceImpl.selectKeyword(keyword);
+        return keywordTourList;
+    }
+
+
+    //Top 4 TourList
+//    @GetMapping("/testdbTopFour")
+//    public @ResponseBody    List<tourItemVO> selectTopFour(){
+//        List<tourItemVO> fourTourList = service.selectTopFour();
+//        return fourTourList;
+//    }
 }
