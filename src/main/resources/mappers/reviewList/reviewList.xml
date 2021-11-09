@@ -20,7 +20,7 @@
         select r.*, t.nickname from Review r, TOURUSER t where r.userid = t.userid
     </select>
     <select id="selectKeyword" resultType="ion.kosa.TazanBack.VO.reviewVO" parameterType="String">
-        select * from Review where Region like '%'||#{keyword}||'%'
+        select * from Review where Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%'
     </select>
     <select id="selectDate" resultType="ion.kosa.TazanBack.VO.reviewVO" parameterType="String">
         select * from Review where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})
@@ -32,4 +32,9 @@
         delete from Review
         where ReviewID = ${reviewID}
     </delete>
+    <update id="reviewUpdate" parameterType="ion.kosa.TazanBack.model.Review">
+        update Review
+        set PlanID = #{planID},Region = #{region},StartDate = #{startDate} ,EndDate = #{endDate},ReviewDate = #{reviewDate} ,ReviewContent = #{reviewContent} ,ReviewTitle = #{reviewTitle}
+        where ReviewID = #{reviewID}
+    </update>
 </mapper>

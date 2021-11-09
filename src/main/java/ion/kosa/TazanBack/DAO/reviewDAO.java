@@ -16,4 +16,5 @@ public interface reviewDAO {
     List<reviewVO> selectDate(String startdate, String enddate);
     List<reviewVO> reviewRecent();
     void reviewDelete(int reviewID);
+    int reviewUpdate(Review review);
 }

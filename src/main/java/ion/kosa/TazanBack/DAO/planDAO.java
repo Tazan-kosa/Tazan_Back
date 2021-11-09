@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface planDAO {
-    void planCreate(Plan plan);
+    int planCreate(Plan plan);
     Plan searchTourPlan(int planID);
     List<Plan> selectMyPlan(int userID);
 }

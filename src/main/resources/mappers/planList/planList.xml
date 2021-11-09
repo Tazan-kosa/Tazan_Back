@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ion.kosa.TazanBack.DAO.planDAO">
-    <insert id="planCreate" parameterType="ion.kosa.TazanBack.model.Plan">
+    <insert id="planCreate" parameterType="ion.kosa.TazanBack.model.Plan" useGeneratedKeys="true" keyColumn="PlanID" keyProperty="planID">
         <selectKey keyProperty="planID" resultType="java.lang.Integer" order="BEFORE">
             select PlanID_seq.nextval from dual
         </selectKey>

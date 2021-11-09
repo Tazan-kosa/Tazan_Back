@@ -43,7 +43,7 @@ public class ReviewController {
         return reviewServiceImpl.reviewDownload(reviewid);
     }
 
-    @GetMapping("/review/reviewList")
+    @GetMapping(value = {"/review/reviewList","/review/search"})
     public @ResponseBody List<Review> reviewList() {
         return reviewServiceImpl.reviewList();
     }
@@ -75,5 +75,10 @@ public class ReviewController {
     @DeleteMapping("/reviewDelete/{reviewID}")
     public void reviewDelete(@PathVariable int reviewID){
         reviewServiceImpl.reviewDelete(reviewID);
+    }
+
+    @PutMapping("/review/update")
+    public int reviewUpdate(@RequestBody reviewVO reviewVO){
+        return reviewServiceImpl.reviewUpdate(reviewVO);
     }
 }
