@@ -13,7 +13,7 @@ id=99&content=new-element
 username=qkrtndh5@naver.com&password=1234
 
 ###
-GET http://kosa3.iptime.org:50201/testdb
+GET http://kosa3.iptime.org:50201/
 Accept: application/json
 
 ###
