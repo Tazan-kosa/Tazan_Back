@@ -5,6 +5,7 @@ import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.DAO.planDAO;
 import ion.kosa.TazanBack.VO.tourItemVO;
 import ion.kosa.TazanBack.model.Plan;
+import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,11 @@ public class planServiceImpl implements planService {
     tourListServiceImpl service;
 
     @Override
-    public void planCreate(planCreateVO planCreateVO) {
-        planDAO.planCreate(voToData(planCreateVO));
+    public int planCreate(planCreateVO planCreateVO) {
+
+        Plan plan = voToData(planCreateVO);
+        planDAO.planCreate(plan);
+        return plan.getPlanID();
     }
 
 
