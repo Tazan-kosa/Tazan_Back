@@ -70,6 +70,11 @@ public class reviewServiceImpl implements  reviewService {
     }
 
     @Override
+    public void reviewDelete(int reviewID) {
+        reviewDAO.reviewDelete(reviewID);
+    }
+
+    @Override
     public Review voToData(reviewVO reviewVO) {
         Review newReview = new Review();
         newReview.setReviewDate(reviewVO.getReviewDate());

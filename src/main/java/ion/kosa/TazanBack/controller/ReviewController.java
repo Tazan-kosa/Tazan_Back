@@ -66,8 +66,14 @@ public class ReviewController {
 
     //Top 4 TourList
     @GetMapping("/review/recent")
-    public @ResponseBody    List<reviewVO> reviewRecent(){
+    public @ResponseBody List<reviewVO> reviewRecent(){
         List<reviewVO> recentreview = reviewServiceImpl.reviewRecent();
         return recentreview;
+    }
+
+    // Delete Review
+    @DeleteMapping("/reviewDelete/{reviewID}")
+    public void reviewDelete(@PathVariable int reviewID){
+        reviewServiceImpl.reviewDelete(reviewID);
     }
 }
