@@ -18,4 +18,5 @@ public class Review {
     @Lob
     private String ReviewContent;
     private String ReviewTitle;
+    private String NickName;
 }

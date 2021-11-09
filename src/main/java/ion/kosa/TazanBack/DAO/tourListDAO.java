@@ -11,4 +11,5 @@ public interface tourListDAO {
     public List<tourItemVO> selectTopFour();
     public List<tourItemVO> selectKeyword(String keyword);
     List<tourItemVO> selectDate(String startdate, String enddate);
+    public tourItemVO selectTourID(int tourID);
 }
