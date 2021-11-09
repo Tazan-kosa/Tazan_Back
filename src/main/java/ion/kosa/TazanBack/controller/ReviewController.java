@@ -65,9 +65,9 @@ public class ReviewController {
 
 
     //Top 4 TourList
-//    @GetMapping("/testdbTopFour")
-//    public @ResponseBody    List<tourItemVO> selectTopFour(){
-//        List<tourItemVO> fourTourList = service.selectTopFour();
-//        return fourTourList;
-//    }
+    @GetMapping("/review/recent")
+    public @ResponseBody    List<reviewVO> reviewRecent(){
+        List<reviewVO> recentreview = reviewServiceImpl.reviewRecent();
+        return recentreview;
+    }
 }
