@@ -55,6 +55,16 @@ public class reviewServiceImpl implements  reviewService {
     }
 
     @Override
+    public List<reviewVO> selectKeyword(String keyword) {
+        return reviewDAO.selectKeyword(keyword);
+    }
+
+    @Override
+    public List<reviewVO> selectDate(String startdate, String enddate) {
+        return reviewDAO.selectDate(startdate,enddate);
+    }
+
+    @Override
     public Review voToData(reviewVO reviewVO) {
         Review newReview = new Review();
         newReview.setReviewDate(reviewVO.getReviewDate());

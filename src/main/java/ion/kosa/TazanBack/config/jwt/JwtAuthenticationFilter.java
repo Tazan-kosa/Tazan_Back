@@ -49,8 +49,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject("토큰이름")
                 .withExpiresAt(exp)
                 .withClaim("id", principalDetails.getUser().getUserID())
-                .withClaim("Name", principalDetails.getUser().getName())
+                .withClaim("name", principalDetails.getUser().getName())
                 .withClaim("nickname",principalDetails.getUser().getNickName())
+                .withClaim("email",principalDetails.getUser().getEmail())
+                .withClaim("auth",principalDetails.getUser().getAuth().name())
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + jwtToken);
         JSONObject json = new JSONObject();
