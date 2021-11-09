@@ -25,12 +25,12 @@ public class planController {
 
 
     @PostMapping("/plan/create")
-    public void planCreate(@RequestBody planCreateVO planCreateVO){
-        planServiceImpl.planCreate(planCreateVO);
+    public int planCreate(@RequestBody planCreateVO planCreateVO){
+        return planServiceImpl.planCreate(planCreateVO);
 
     }
 
-    @GetMapping("/plan/getPlan/{planID}")
+    @GetMapping("/planDetail/{planID}")
     public planVO getPlan(@PathVariable int planID){
 
         return planServiceImpl.getPlan(planID);

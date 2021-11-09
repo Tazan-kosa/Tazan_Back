@@ -9,7 +9,7 @@ import ion.kosa.TazanBack.model.Review;
 import java.util.List;
 
 public interface planService {
-    void planCreate(planCreateVO planCreateVO);
+    int planCreate(planCreateVO planCreateVO);
     planVO dataToVO(Plan plan);
     Plan voToData(planCreateVO planVO);
     planVO getPlan(int planID);

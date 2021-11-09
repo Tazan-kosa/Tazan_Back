@@ -43,7 +43,7 @@ public class ReviewController {
         return reviewServiceImpl.reviewDownload(reviewid);
     }
 
-    @GetMapping("/review/reviewList")
+    @GetMapping(value = {"/review/reviewList","/review/search"})
     public @ResponseBody List<Review> reviewList() {
         return reviewServiceImpl.reviewList();
     }
