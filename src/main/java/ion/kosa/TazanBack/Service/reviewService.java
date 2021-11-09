@@ -15,4 +15,5 @@ public interface reviewService {
     List<reviewVO> selectKeyword(String keyword);
     List<reviewVO> selectDate(String startdate,String enddate);
     List<reviewVO> reviewRecent();
+    void reviewDelete(int reviewID);
 }
