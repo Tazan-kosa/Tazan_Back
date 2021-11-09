@@ -3,6 +3,7 @@ package ion.kosa.TazanBack.controller;
 
 import ion.kosa.TazanBack.Service.planServiceImpl;
 import ion.kosa.TazanBack.Service.reviewServiceImpl;
+import ion.kosa.TazanBack.VO.planCreateVO;
 import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.VO.reviewVO;
 import ion.kosa.TazanBack.model.Plan;
@@ -24,8 +25,8 @@ public class planController {
 
 
     @PostMapping("/plan/create")
-    public void planCreate(@RequestBody planVO planVO){
-        planServiceImpl.planCreate(planVO);
+    public void planCreate(@RequestBody planCreateVO planCreateVO){
+        planServiceImpl.planCreate(planCreateVO);
 
     }
 

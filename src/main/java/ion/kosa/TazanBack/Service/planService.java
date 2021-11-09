@@ -1,5 +1,6 @@
 package ion.kosa.TazanBack.Service;
 
+import ion.kosa.TazanBack.VO.planCreateVO;
 import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.VO.reviewVO;
 import ion.kosa.TazanBack.model.Plan;
@@ -8,9 +9,9 @@ import ion.kosa.TazanBack.model.Review;
 import java.util.List;
 
 public interface planService {
-    void planCreate(planVO planVO);
+    void planCreate(planCreateVO planCreateVO);
     planVO dataToVO(Plan plan);
-    Plan voToData(planVO planVO);
+    Plan voToData(planCreateVO planVO);
     planVO getPlan(int planID);
     List<Plan> selectMyPlan(int userID);
 }
