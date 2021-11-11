@@ -45,6 +45,7 @@ public class reviewServiceImpl implements  reviewService {
         vo.setReviewID(review.getReviewID());
         vo.setUserID(review.getUserID());
         vo.setNickName(review.getNickName());
+        vo.setReviewThumbnail(review.getReviewThumbnail());
         return vo;
     }
 
@@ -85,6 +86,7 @@ public class reviewServiceImpl implements  reviewService {
         newReview.setUserID(reviewVO.getUserID());
         newReview.setReviewID(reviewVO.getReviewID());
         newReview.setReviewContent(reviewVO.getReviewContent());
+        newReview.setReviewThumbnail(reviewVO.getReviewThumbnail());
         return newReview;
     }
 
