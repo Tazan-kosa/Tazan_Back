@@ -17,10 +17,10 @@
         where ReviewID = ${reviewID} And r.userid = t.userid
     </select>
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
-        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail, t.nickname from Review r, TOURUSER t where r.userid = t.userid
+        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r
     </select>
     <select id="selectKeyword" resultType="ion.kosa.TazanBack.VO.reviewVO" parameterType="String">
-        select * from Review where Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%'
+        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r where Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%'
     </select>
     <select id="selectDate" resultType="ion.kosa.TazanBack.VO.reviewVO" parameterType="String">
         select * from Review where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})
