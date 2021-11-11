@@ -17,6 +17,8 @@ public class reviewVO {
     private Date reviewDate;
     @Lob
     private String reviewContent;
+    @Lob
+    private String reviewThumbnail;
     private String reviewTitle;
     private String nickName;
 }
