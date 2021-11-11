@@ -85,52 +85,11 @@ public class reviewServiceImpl implements  reviewService {
         newReview.setUserID(reviewVO.getUserID());
         newReview.setReviewID(reviewVO.getReviewID());
         newReview.setReviewContent(reviewVO.getReviewContent());
-//        String reviewContentVOS = reviewVO.getReviewContent();
-//        Iterator iterator = reviewContentVOS.iterator();
-//        String splicekeword_img = "$^^$";
-//        String splicekeword_content = "@^^@";
-//        String content = "";
-//
-//        //리뷰 내용 조회
-//        while (iterator.hasNext()) {
-//
-//            //글,그림 가져오기
-//            reviewContentVO contentVO = (reviewContentVO) iterator.next();
-//
-//            //작성된 글 추출
-//            content+=contentVO.getReviewContent();
-//
-//            //이미지 존재시
-//            if(contentVO.getReviewImage()!=null) {
-//                try {
-//
-//                    //이미지 임을 표시
-//                    content+=splicekeword_img;
-//
-//                    //저장 경로 생성
-//                    Path path = Paths.get(FILE_PATH + contentVO.getReviewImage().getOriginalFilename());
-//
-//                    //경로에 저장
-//                    contentVO.getReviewImage().transferTo(path);
-//
-//                    //이미지 경로 추가
-//                    content+=path;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            //글 내용 추가
-//            content+=splicekeword_content;
-//        }
-//        newReview.setReviewContent(content);
         return newReview;
     }
 
     @Override
-    public int reviewUpdate(reviewVO reviewVO) {
-        Review review = voToData(reviewVO);
-        reviewDAO.reviewUpdate(review);
-        return review.getReviewID();
+    public void reviewUpdate(reviewVO reviewVO) {
+        reviewDAO.reviewUpdate(voToData(reviewVO));
     }
 }
