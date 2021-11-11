@@ -78,7 +78,7 @@ public class ReviewController {
     }
 
     @PutMapping("/review/update")
-    public int reviewUpdate(@RequestBody reviewVO reviewVO){
-        return reviewServiceImpl.reviewUpdate(reviewVO);
+    public void reviewUpdate(@RequestBody reviewVO reviewVO){
+        reviewServiceImpl.reviewUpdate(reviewVO);
     }
 }

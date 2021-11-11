@@ -8,7 +8,7 @@
             select ReviewID_seq.nextval from dual
         </selectKey>
 
-        insert into Review (ReviewID,UserID,PlanID,Region,StartDate,EndDate,ReviewDate,ReviewContent,ReviewTitle) values(${reviewID},${userID},${planID},#{region},#{startDate},#{endDate},#{reviewDate},#{reviewContent},#{reviewTitle})
+        insert into Review (ReviewID,UserID,PlanID,Region,StartDate,EndDate,ReviewDate,ReviewContent,ReviewTitle,ReviewThumbnail) values(${reviewID},${userID},${planID},#{region},#{startDate},#{endDate},#{reviewDate},#{reviewContent},#{reviewTitle},#{reviewThumbnail})
 
     </insert>
     <select id="reviewDownload" resultType="ion.kosa.TazanBack.model.Review" parameterType="int">
@@ -17,7 +17,7 @@
         where ReviewID = ${reviewID} And r.userid = t.userid
     </select>
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
-        select r.*, t.nickname from Review r, TOURUSER t where r.userid = t.userid
+        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail, t.nickname from Review r, TOURUSER t where r.userid = t.userid
     </select>
     <select id="selectKeyword" resultType="ion.kosa.TazanBack.VO.reviewVO" parameterType="String">
         select * from Review where Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%'
