@@ -42,5 +42,10 @@ public class planController {
         return planServiceImpl.selectMyPlan(userID);
     }
 
+    @DeleteMapping("/planDelete/{planID}")
+    public void deletePlan(@PathVariable int planID){
+
+        planServiceImpl.deletePlan(planID);
+    }
 
 }
