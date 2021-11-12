@@ -18,4 +18,5 @@ public interface reviewService {
     List<reviewVO> dataListToVOList(List<Review> review);
     void reviewDelete(int reviewID);
     void reviewUpdate(reviewVO reviewVO);
+    List<reviewVO> myReviewList(int userID);
 }

@@ -10,13 +10,28 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class reviewServiceImpl implements  reviewService {
 
     private final reviewDAO reviewDAO;
+
+    @Override
+    public List<reviewVO> myReviewList(int userID) {
+        List<reviewVO> voList = new ArrayList<>();
+        List<Review> reviewList =reviewDAO.myReviewList(userID);
+        Iterator iterator = reviewList.iterator();
+        while(iterator.hasNext()){
+            Review review = (Review)iterator.next();
+            voList.add(dataToVO(review));
+        }
+        return voList;
+    }
 
     @Override
     public int reviewUpload(reviewVO reviewVO) {

@@ -12,4 +12,5 @@ public interface planDAO {
     int planCreate(Plan plan);
     Plan searchTourPlan(int planID);
     List<Plan> selectMyPlan(int userID);
+    void deletePlan(int planID);
 }

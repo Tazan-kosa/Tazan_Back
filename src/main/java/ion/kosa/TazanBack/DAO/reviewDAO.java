@@ -17,4 +17,5 @@ public interface reviewDAO {
     List<Review> reviewRecent();
     void reviewDelete(int reviewID);
     void reviewUpdate(Review review);
+    List<Review> myReviewList(int userID);
 }
