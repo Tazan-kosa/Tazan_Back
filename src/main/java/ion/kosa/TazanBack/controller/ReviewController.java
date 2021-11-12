@@ -44,7 +44,7 @@ public class ReviewController {
     }
 
     @GetMapping(value = {"/review/reviewList","/review/search"})
-    public @ResponseBody List<Review> reviewList() {
+    public @ResponseBody List<reviewVO> reviewList() {
         return reviewServiceImpl.reviewList();
     }
 
@@ -80,5 +80,10 @@ public class ReviewController {
     @PutMapping("/review/update")
     public void reviewUpdate(@RequestBody reviewVO reviewVO){
         reviewServiceImpl.reviewUpdate(reviewVO);
+    }
+
+    @GetMapping("/review/myLiviewList/{userID}")
+    public List<reviewVO> selectdate(@PathVariable int userID){
+        return reviewServiceImpl.myReviewList(userID);
     }
 }

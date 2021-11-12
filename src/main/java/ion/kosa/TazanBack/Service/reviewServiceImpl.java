@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +20,18 @@ import java.util.List;
 public class reviewServiceImpl implements  reviewService {
 
     private final reviewDAO reviewDAO;
+
+    @Override
+    public List<reviewVO> myReviewList(int userID) {
+        List<reviewVO> voList = new ArrayList<>();
+        List<Review> reviewList =reviewDAO.myReviewList(userID);
+        Iterator iterator = reviewList.iterator();
+        while(iterator.hasNext()){
+            Review review = (Review)iterator.next();
+            voList.add(dataToVO(review));
+        }
+        return voList;
+    }
 
     @Override
     public int reviewUpload(reviewVO reviewVO) {
@@ -45,28 +58,40 @@ public class reviewServiceImpl implements  reviewService {
         vo.setReviewID(review.getReviewID());
         vo.setUserID(review.getUserID());
         vo.setNickName(review.getNickName());
+        if(review.getReviewThumbnail() == null){
+            review.setReviewThumbnail("https://user-images.githubusercontent.com/37900920/141242967-16a7888c-76ba-4a7b-b9e7-7fceb9a727aa.png");
+        }
         vo.setReviewThumbnail(review.getReviewThumbnail());
         return vo;
     }
 
     @Override
-    public List<Review> reviewList() {
-        return reviewDAO.reviewList();
+    public List<reviewVO> reviewList() {
+        return dataListToVOList(reviewDAO.reviewList());
     }
 
     @Override
     public List<reviewVO> selectKeyword(String keyword) {
-        return reviewDAO.selectKeyword(keyword);
+        return dataListToVOList(reviewDAO.selectKeyword(keyword));
     }
 
     @Override
     public List<reviewVO> selectDate(String startdate, String enddate) {
-        return reviewDAO.selectDate(startdate,enddate);
+        return dataListToVOList(reviewDAO.selectDate(startdate,enddate));
     }
 
     @Override
     public List<reviewVO> reviewRecent() {
-        return reviewDAO.reviewRecent();
+        return dataListToVOList(reviewDAO.reviewRecent());
+    }
+
+    @Override
+    public List<reviewVO> dataListToVOList(List<Review> review) {
+        List<reviewVO> rv = new ArrayList();
+        for (Review r: review) {
+            rv.add(dataToVO(r));
+        }
+        return rv;
     }
 
     @Override

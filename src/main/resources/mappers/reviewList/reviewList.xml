@@ -17,15 +17,15 @@
         where ReviewID = ${reviewID} And r.userid = t.userid
     </select>
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
-        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail, t.nickname from Review r, TOURUSER t where r.userid = t.userid
+        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r
     </select>
-    <select id="selectKeyword" resultType="ion.kosa.TazanBack.VO.reviewVO" parameterType="String">
-        select * from Review where Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%'
+    <select id="selectKeyword" resultType="ion.kosa.TazanBack.model.Review" parameterType="String">
+        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r where Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%'
     </select>
-    <select id="selectDate" resultType="ion.kosa.TazanBack.VO.reviewVO" parameterType="String">
+    <select id="selectDate" resultType="ion.kosa.TazanBack.model.Review" parameterType="String">
         select * from Review where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})
     </select>
-    <select id="reviewRecent" resultType="ion.kosa.TazanBack.VO.reviewVO">
+    <select id="reviewRecent" resultType="ion.kosa.TazanBack.model.Review">
         select * FROM (select * from Review order by reviewID desc) where ROWNUM <![CDATA[ < ]]>= 4
     </select>
     <delete id="reviewDelete" parameterType="int">
@@ -37,4 +37,7 @@
         set PlanID = #{planID},Region = #{region},StartDate = #{startDate} ,EndDate = #{endDate},ReviewDate = #{reviewDate} ,ReviewContent = #{reviewContent} ,ReviewTitle = #{reviewTitle}
         where ReviewID = #{reviewID}
     </update>
+    <select id="myReviewList" parameterType="int" resultType="ion.kosa.TazanBack.model.Review">
+        select * from Review where UserID = ${userID}
+    </select>
 </mapper>
