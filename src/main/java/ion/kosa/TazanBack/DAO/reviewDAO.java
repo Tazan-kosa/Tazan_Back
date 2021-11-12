@@ -12,8 +12,8 @@ public interface reviewDAO {
     Review reviewDownload(int reviewID);
     int reviewUpload(Review review);
     List<Review> reviewList();
-    List<Review> selectKeyword(String keyword);
-    List<Review> selectDate(String startdate, String enddate);
+    List<Review> selectKeyword(String keyword,String startdate,String enddate);
+//    List<Review> selectDate(String startdate, String enddate);
     List<Review> reviewRecent();
     void reviewDelete(int reviewID);
     void reviewUpdate(Review review);

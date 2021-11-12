@@ -10,11 +10,11 @@
         select * from (select * from Tour order by Likes desc) where  ROWNUM &lt;= 4
     </select>
     <select id="selectKeyword" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="String">
-        select * from Tour where Address like '%'||#{keyword}||'%' or TourRegion like '%'||#{keyword}||'%' or Title like '%'||#{keyword}||'%'
+        select * from Tour where (Address like '%'||#{keyword}||'%' or TourRegion like '%'||#{keyword}||'%' or Title like '%'||#{keyword}||'%') and ((TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate}))
     </select>
-    <select id="selectDate" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="String">
-        select * from Tour where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})
-    </select>
+<!--    <select id="selectDate" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="String">-->
+<!--        select * from Tour where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})-->
+<!--    </select>-->
     <select id="selectTourID" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="int">
         select * from Tour where TourID = ${tourID}
     </select>

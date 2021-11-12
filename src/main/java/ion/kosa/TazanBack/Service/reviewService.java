@@ -12,8 +12,8 @@ public interface reviewService {
     reviewVO dataToVO(Review review);
     Review voToData(reviewVO reviewVO);
     List<reviewVO> reviewList();
-    List<reviewVO> selectKeyword(String keyword);
-    List<reviewVO> selectDate(String startdate,String enddate);
+    List<reviewVO> selectKeyword(String keyword,String startdate,String enddate);
+//    List<reviewVO> selectDate(String startdate,String enddate);
     List<reviewVO> reviewRecent();
     List<reviewVO> dataListToVOList(List<Review> review);
     void reviewDelete(int reviewID);

@@ -20,11 +20,11 @@
         select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r
     </select>
     <select id="selectKeyword" resultType="ion.kosa.TazanBack.model.Review" parameterType="String">
-        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r where Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%'
+        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r where (Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%') and ((TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate}))
     </select>
-    <select id="selectDate" resultType="ion.kosa.TazanBack.model.Review" parameterType="String">
-        select * from Review where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})
-    </select>
+<!--    <select id="selectDate" resultType="ion.kosa.TazanBack.model.Review" parameterType="String">-->
+<!--        select * from Review where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})-->
+<!--    </select>-->
     <select id="reviewRecent" resultType="ion.kosa.TazanBack.model.Review">
         select * FROM (select * from Review order by reviewID desc) where ROWNUM <![CDATA[ < ]]>= 4
     </select>
