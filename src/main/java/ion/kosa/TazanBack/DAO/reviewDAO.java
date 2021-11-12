@@ -12,9 +12,9 @@ public interface reviewDAO {
     Review reviewDownload(int reviewID);
     int reviewUpload(Review review);
     List<Review> reviewList();
-    List<reviewVO> selectKeyword(String keyword);
-    List<reviewVO> selectDate(String startdate, String enddate);
-    List<reviewVO> reviewRecent();
+    List<Review> selectKeyword(String keyword);
+    List<Review> selectDate(String startdate, String enddate);
+    List<Review> reviewRecent();
     void reviewDelete(int reviewID);
     void reviewUpdate(Review review);
     List<Review> myReviewList(int userID);

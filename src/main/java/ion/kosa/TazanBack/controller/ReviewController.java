@@ -44,7 +44,7 @@ public class ReviewController {
     }
 
     @GetMapping(value = {"/review/reviewList","/review/search"})
-    public @ResponseBody List<Review> reviewList() {
+    public @ResponseBody List<reviewVO> reviewList() {
         return reviewServiceImpl.reviewList();
     }
 
