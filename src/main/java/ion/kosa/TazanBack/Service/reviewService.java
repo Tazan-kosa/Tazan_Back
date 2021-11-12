@@ -11,10 +11,11 @@ public interface reviewService {
     reviewVO reviewDownload(int reviewID);
     reviewVO dataToVO(Review review);
     Review voToData(reviewVO reviewVO);
-    List<Review> reviewList();
+    List<reviewVO> reviewList();
     List<reviewVO> selectKeyword(String keyword);
     List<reviewVO> selectDate(String startdate,String enddate);
     List<reviewVO> reviewRecent();
+    List<reviewVO> dataListToVOList(List<Review> review);
     void reviewDelete(int reviewID);
     void reviewUpdate(reviewVO reviewVO);
 }
