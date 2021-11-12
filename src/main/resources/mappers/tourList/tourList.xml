@@ -18,4 +18,7 @@
     <select id="selectTourID" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="int">
         select * from Tour where TourID = ${tourID}
     </select>
+    <select id="searchRegion" resultType="ion.kosa.TazanBack.VO.tourItemVO" parameterType="String">
+        select * from Tour where (Address like '%'||#{keyword}||'%' or TourRegion like '%'||#{keyword}||'%' or Title like '%'||#{keyword}||'%')
+    </select>
 </mapper>

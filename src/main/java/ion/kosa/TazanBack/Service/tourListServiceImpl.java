@@ -30,10 +30,10 @@ public class tourListServiceImpl implements tourListService{
         return tourListDAO.selectKeyword(keyword,startdate,enddate);
     }
 
-//    @Override
-//    public List<tourItemVO> selectDate(String startdate, String enddate) {
-//        return tourListDAO.selectDate(startdate,enddate);
-//    }
+    @Override
+    public List<tourItemVO> searchRegion(String keyword) {
+        return tourListDAO.searchRegion(keyword);
+    }
 
     @Override
     public tourItemVO selectTourID(int tourID) {

@@ -10,6 +10,7 @@ public interface tourListDAO {
     public List<tourItemVO> selectAll();
     public List<tourItemVO> selectTopFour();
     public List<tourItemVO> selectKeyword(String keyword,String startdate,String enddate);
-//    List<tourItemVO> selectDate(String startdate, String enddate);
+    List<tourItemVO> searchRegion(String keyword);
     public tourItemVO selectTourID(int tourID);
+
 }

@@ -27,6 +27,13 @@ public class tourListController {
         return keywordTourList;
     }
 
+    @GetMapping("/search/{keyword}")
+    public @ResponseBody
+    List<tourItemVO> searchRegion(@PathVariable String keyword){
+
+        return service.searchRegion(keyword);
+    }
+
     //날짜기반 검색
 //    @GetMapping("/selectdate/{startdate}/{enddate}")
 //    public List<tourItemVO> selectdate(@PathVariable String startdate, @PathVariable String enddate){
