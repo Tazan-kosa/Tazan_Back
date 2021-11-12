@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +20,18 @@ import java.util.List;
 public class reviewServiceImpl implements  reviewService {
 
     private final reviewDAO reviewDAO;
+
+    @Override
+    public List<reviewVO> myReviewList(int userID) {
+        List<reviewVO> voList = new ArrayList<>();
+        List<Review> reviewList =reviewDAO.myReviewList(userID);
+        Iterator iterator = reviewList.iterator();
+        while(iterator.hasNext()){
+            Review review = (Review)iterator.next();
+            voList.add(dataToVO(review));
+        }
+        return voList;
+    }
 
     @Override
     public int reviewUpload(reviewVO reviewVO) {
@@ -94,4 +107,6 @@ public class reviewServiceImpl implements  reviewService {
     public void reviewUpdate(reviewVO reviewVO) {
         reviewDAO.reviewUpdate(voToData(reviewVO));
     }
+
+
 }

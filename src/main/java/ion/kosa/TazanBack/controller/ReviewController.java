@@ -81,4 +81,9 @@ public class ReviewController {
     public void reviewUpdate(@RequestBody reviewVO reviewVO){
         reviewServiceImpl.reviewUpdate(reviewVO);
     }
+
+    @GetMapping("/review/myLiviewList/{userID}")
+    public List<reviewVO> selectdate(@PathVariable int userID){
+        return reviewServiceImpl.myReviewList(userID);
+    }
 }
