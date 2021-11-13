@@ -95,4 +95,10 @@ public class ReviewController {
     public List<reviewVO> selectdate(@PathVariable int userID) {
         return reviewServiceImpl.myReviewList(userID);
     }
+
+    @GetMapping("/review/reviewmanageList")
+    public @ResponseBody
+    List<reviewVO> reviewmanageList() {
+        return reviewServiceImpl.reviewmanageList();
+    }
 }

@@ -19,6 +19,11 @@
     <select id="reviewList" resultType="ion.kosa.TazanBack.model.Review">
         select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r
     </select>
+
+    <select id="reviewmanageList" resultType="ion.kosa.TazanBack.model.Review">
+        select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID from Review r
+    </select>
+
     <select id="selectKeyword" resultType="ion.kosa.TazanBack.model.Review" parameterType="String">
         select r.region, r.ReviewTitle, r.StartDate, r.EndDate, r.ReviewID, r.Reviewthumbnail from Review r where (Region like '%'||#{keyword}||'%' or ReviewTitle like '%'||#{keyword}||'%') and ((TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate}))
     </select>
