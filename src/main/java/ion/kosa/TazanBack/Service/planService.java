@@ -17,4 +17,5 @@ public interface planService {
     List<planVO> planList();
     void deletePlan(int planID);
     void updateReviewFlag(int planID);
+    void deleteReviewFlag(int planID);
 }

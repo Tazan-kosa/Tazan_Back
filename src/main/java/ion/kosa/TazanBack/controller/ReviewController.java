@@ -1,6 +1,7 @@
 package ion.kosa.TazanBack.controller;
 
 
+import ion.kosa.TazanBack.Service.planServiceImpl;
 import ion.kosa.TazanBack.Service.reviewServiceImpl;
 import ion.kosa.TazanBack.VO.reviewVO;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 public class ReviewController {
 
     private final reviewServiceImpl reviewServiceImpl;
+    private final planServiceImpl planServiceImpl;
 
 
     @PostMapping(value = "/review/upload")
@@ -67,8 +69,9 @@ public class ReviewController {
     }
 
     // Delete Review
-    @DeleteMapping("/reviewDelete/{reviewID}")
-    public void reviewDelete(@PathVariable int reviewID) {
+    @DeleteMapping("/reviewDelete/{reviewID}/{planID}")
+    public void reviewDelete(@PathVariable int reviewID, @PathVariable int planID) {
+        planServiceImpl.deleteReviewFlag(planID);
         reviewServiceImpl.reviewDelete(reviewID);
     }
 
