@@ -102,6 +102,11 @@ public class planServiceImpl implements planService {
     }
 
     @Override
+    public void deleteReviewFlag(int planID) {
+        planDAO.deleteReviewFlag(planID);
+    }
+
+    @Override
     public planVO dataToVO(Plan plan) {
         planVO vo = new planVO();
         vo.setPlanID(plan.getPlanID());

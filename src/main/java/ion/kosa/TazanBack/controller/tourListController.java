@@ -34,13 +34,6 @@ public class tourListController {
         return service.searchRegion(keyword);
     }
 
-    //날짜기반 검색
-//    @GetMapping("/selectdate/{startdate}/{enddate}")
-//    public List<tourItemVO> selectdate(@PathVariable String startdate, @PathVariable String enddate){
-//        List<tourItemVO> selectdate = service.selectDate(startdate,enddate);
-//        return selectdate;
-//    }
-
     //default data return
     @GetMapping(value = {"/tourList","/search"})
     public @ResponseBody
