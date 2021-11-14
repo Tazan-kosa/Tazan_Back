@@ -1,7 +1,5 @@
 package ion.kosa.TazanBack.DAO;
 
-import ion.kosa.TazanBack.VO.reviewVO;
-import ion.kosa.TazanBack.VO.tourItemVO;
 import ion.kosa.TazanBack.model.Review;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,9 +11,9 @@ public interface reviewDAO {
     int reviewUpload(Review review);
     List<Review> reviewList();
     List<Review> selectKeyword(String keyword,String startdate,String enddate);
-//    List<Review> selectDate(String startdate, String enddate);
     List<Review> reviewRecent();
     void reviewDelete(int reviewID);
     void reviewUpdate(Review review);
     List<Review> myReviewList(int userID);
+    Review myReviewSelect(int planID);
 }

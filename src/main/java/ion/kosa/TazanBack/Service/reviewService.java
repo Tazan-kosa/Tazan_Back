@@ -19,4 +19,5 @@ public interface reviewService {
     void reviewDelete(int reviewID);
     void reviewUpdate(reviewVO reviewVO);
     List<reviewVO> myReviewList(int userID);
+    reviewVO myReviewSelect(int planID);
 }

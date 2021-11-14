@@ -5,7 +5,6 @@ import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.DAO.planDAO;
 import ion.kosa.TazanBack.VO.tourItemVO;
 import ion.kosa.TazanBack.model.Plan;
-import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,6 +75,11 @@ public class planServiceImpl implements planService {
     @Override
     public void deletePlan(int planID) {
         planDAO.deletePlan(planID);
+    }
+
+    @Override
+    public void updateReviewFlag(int planID) {
+        planDAO.updateReviewFlag(planID);
     }
 
     @Override
