@@ -14,5 +14,6 @@ public interface planService {
     Plan voToData(planCreateVO planVO);
     planVO getPlan(int planID);
     List<Plan> selectMyPlan(int userID);
+    List<planVO> planList();
     void deletePlan(int planID);
 }
