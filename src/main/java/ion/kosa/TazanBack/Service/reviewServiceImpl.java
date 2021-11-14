@@ -73,6 +73,10 @@ public class reviewServiceImpl implements  reviewService {
     public List<reviewVO> reviewList() {
         return dataListToVOList(reviewDAO.reviewList());
     }
+    @Override
+    public List<reviewVO> reviewmanageList() {
+        return dataListToVOList(reviewDAO.reviewmanageList());
+    }
 
     @Override
     public List<reviewVO> selectKeyword(String keyword,String startdate,String enddate) {

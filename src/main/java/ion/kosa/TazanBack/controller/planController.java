@@ -42,4 +42,9 @@ public class planController {
         planServiceImpl.deletePlan(planID);
     }
 
+    @GetMapping("/plan/myPlanList")
+    public @ResponseBody List<planVO> planList(){
+        return planServiceImpl.planList();
+    }
+
 }

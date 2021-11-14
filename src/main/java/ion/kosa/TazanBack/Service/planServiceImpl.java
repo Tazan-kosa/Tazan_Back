@@ -28,6 +28,25 @@ public class planServiceImpl implements planService {
         return plan.getPlanID();
     }
 
+    public List<planVO> planList(){
+        List<Plan> plans = planDAO.planList();
+        Iterator iterator = plans.iterator();
+        List<planVO> vo = new ArrayList<>();
+        while (iterator.hasNext()){
+            Plan plan = (Plan)iterator.next();
+            planVO planvo = new planVO();
+            planvo.setPlanID(plan.getPlanID());
+            planvo.setPlanTitle(plan.getPlanTitle());
+            planvo.setUserID(plan.getUserID());
+            planvo.setRegion(plan.getRegion());
+            planvo.setStartDate(plan.getStartDate());
+            planvo.setEndDate(plan.getEndDate());
+            planvo.setPlanDate(plan.getPlanDate());
+            vo.add(planvo);
+        }
+        return vo;
+    }
+
 
 
     @Override

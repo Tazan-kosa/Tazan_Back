@@ -82,6 +82,12 @@ public class ReviewController {
         return reviewServiceImpl.myReviewList(userID);
     }
 
+    @GetMapping("/review/reviewmanageList")
+    public @ResponseBody
+    List<reviewVO> reviewmanageList() {
+        return reviewServiceImpl.reviewmanageList();
+    }
+
     @GetMapping("/reviwe/reviewWrite/{planID}")
     public reviewVO reviewWrite(@PathVariable int planID){
         return reviewServiceImpl.myReviewSelect(planID);
