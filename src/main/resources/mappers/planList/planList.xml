@@ -30,4 +30,10 @@
         set ReviewFlag = 1
         where PlanID = ${planID}
     </update>
+
+    <update id="deleteReviewFlag" parameterType="int">
+        update TourPlan
+        set ReviewFlag = 0
+        where PlanID = ${planID}
+    </update>
 </mapper>

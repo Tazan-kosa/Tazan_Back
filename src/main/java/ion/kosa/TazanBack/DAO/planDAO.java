@@ -15,4 +15,5 @@ public interface planDAO {
     void deletePlan(int planID);
     List<Plan> planList();
     void updateReviewFlag(int planID);
+    void deleteReviewFlag(int planID);
 }
