@@ -15,4 +15,5 @@ public class Plan {
     private String planTitle;
     private String planList;
     private String planSize;
+    private char ReviewFlag;
 }
