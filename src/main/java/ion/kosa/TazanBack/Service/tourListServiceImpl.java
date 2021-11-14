@@ -5,6 +5,7 @@ import ion.kosa.TazanBack.DAO.tourListDAO;
 import ion.kosa.TazanBack.VO.tourItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -25,13 +26,13 @@ public class tourListServiceImpl implements tourListService{
     }
 
     @Override
-    public List<tourItemVO> selectKeyword(String keyword) {
-        return tourListDAO.selectKeyword(keyword);
+    public List<tourItemVO> selectKeyword(String keyword, String startdate, String enddate) {
+        return tourListDAO.selectKeyword(keyword,startdate,enddate);
     }
 
     @Override
-    public List<tourItemVO> selectDate(String startdate, String enddate) {
-        return tourListDAO.selectDate(startdate,enddate);
+    public List<tourItemVO> searchRegion(String keyword) {
+        return tourListDAO.searchRegion(keyword);
     }
 
     @Override

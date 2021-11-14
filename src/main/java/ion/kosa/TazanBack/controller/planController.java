@@ -2,16 +2,10 @@ package ion.kosa.TazanBack.controller;
 
 
 import ion.kosa.TazanBack.Service.planServiceImpl;
-import ion.kosa.TazanBack.Service.reviewServiceImpl;
 import ion.kosa.TazanBack.VO.planCreateVO;
 import ion.kosa.TazanBack.VO.planVO;
-import ion.kosa.TazanBack.VO.reviewVO;
 import ion.kosa.TazanBack.model.Plan;
-import ion.kosa.TazanBack.model.Review;
-import lombok.Generated;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,6 +40,11 @@ public class planController {
     public void deletePlan(@PathVariable int planID){
 
         planServiceImpl.deletePlan(planID);
+    }
+
+    @GetMapping("/plan/myPlanList")
+    public @ResponseBody List<planVO> planList(){
+        return planServiceImpl.planList();
     }
 
 }

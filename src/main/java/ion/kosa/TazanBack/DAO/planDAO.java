@@ -13,4 +13,6 @@ public interface planDAO {
     Plan searchTourPlan(int planID);
     List<Plan> selectMyPlan(int userID);
     void deletePlan(int planID);
+    List<Plan> planList();
+    void updateReviewFlag(int planID);
 }

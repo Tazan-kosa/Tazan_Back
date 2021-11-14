@@ -14,19 +14,32 @@ public class tourListController {
     tourListServiceImpl service;
 
     //키워드 검색
-    @GetMapping("/search/{keyword}")
+    @GetMapping("/search/{keyword}/{startdate}/{enddate}")
     public @ResponseBody
-    List<tourItemVO> search(@PathVariable String keyword){
-        List<tourItemVO> keywordTourList = service.selectKeyword(keyword);
+    List<tourItemVO> search(@PathVariable String keyword, @PathVariable String startdate, @PathVariable String enddate){
+        List<tourItemVO> keywordTourList;
+        if(keyword.equals("noneKeyword")){
+            keywordTourList = service.selectKeyword("",startdate,enddate);
+        }
+        else{
+            keywordTourList = service.selectKeyword(keyword,startdate,enddate);
+        }
         return keywordTourList;
     }
 
-    //날짜기반 검색
-    @GetMapping("/selectdate/{startdate}/{enddate}")
-    public List<tourItemVO> selectdate(@PathVariable String startdate, @PathVariable String enddate){
-        List<tourItemVO> selectdate = service.selectDate(startdate,enddate);
-        return selectdate;
+    @GetMapping("/search/{keyword}")
+    public @ResponseBody
+    List<tourItemVO> searchRegion(@PathVariable String keyword){
+
+        return service.searchRegion(keyword);
     }
+
+    //날짜기반 검색
+//    @GetMapping("/selectdate/{startdate}/{enddate}")
+//    public List<tourItemVO> selectdate(@PathVariable String startdate, @PathVariable String enddate){
+//        List<tourItemVO> selectdate = service.selectDate(startdate,enddate);
+//        return selectdate;
+//    }
 
     //default data return
     @GetMapping(value = {"/tourList","/search"})

@@ -7,7 +7,8 @@ import java.util.List;
 public interface tourListService {
     List<tourItemVO> selectAll();
     List<tourItemVO> selectTopFour();
-    List<tourItemVO> selectKeyword(String keyword);
-    List<tourItemVO> selectDate(String startdate,String enddate);
+    List<tourItemVO> selectKeyword(String keyword,String startdate,String enddate);
+//    List<tourItemVO> selectDate(String startdate,String enddate);
     tourItemVO selectTourID(int tourID);
+    List<tourItemVO> searchRegion(String keyword);
 }

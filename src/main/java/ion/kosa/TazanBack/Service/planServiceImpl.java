@@ -5,7 +5,6 @@ import ion.kosa.TazanBack.VO.planVO;
 import ion.kosa.TazanBack.DAO.planDAO;
 import ion.kosa.TazanBack.VO.tourItemVO;
 import ion.kosa.TazanBack.model.Plan;
-import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +26,25 @@ public class planServiceImpl implements planService {
         Plan plan = voToData(planCreateVO);
         planDAO.planCreate(plan);
         return plan.getPlanID();
+    }
+
+    public List<planVO> planList(){
+        List<Plan> plans = planDAO.planList();
+        Iterator iterator = plans.iterator();
+        List<planVO> vo = new ArrayList<>();
+        while (iterator.hasNext()){
+            Plan plan = (Plan)iterator.next();
+            planVO planvo = new planVO();
+            planvo.setPlanID(plan.getPlanID());
+            planvo.setPlanTitle(plan.getPlanTitle());
+            planvo.setUserID(plan.getUserID());
+            planvo.setRegion(plan.getRegion());
+            planvo.setStartDate(plan.getStartDate());
+            planvo.setEndDate(plan.getEndDate());
+            planvo.setPlanDate(plan.getPlanDate());
+            vo.add(planvo);
+        }
+        return vo;
     }
 
 
@@ -76,6 +94,11 @@ public class planServiceImpl implements planService {
     @Override
     public void deletePlan(int planID) {
         planDAO.deletePlan(planID);
+    }
+
+    @Override
+    public void updateReviewFlag(int planID) {
+        planDAO.updateReviewFlag(planID);
     }
 
     @Override
