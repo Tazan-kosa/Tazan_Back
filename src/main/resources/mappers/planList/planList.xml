@@ -17,7 +17,7 @@
     </select>
 
     <select id="selectMyPlan" resultType="ion.kosa.TazanBack.model.Plan" parameterType="int">
-        select * from TourPlan where UserID = ${userID} And ReivewFlag = 0;
+        select * from TourPlan where UserID = ${userID}
     </select>
     <select id="planList" resultType="ion.kosa.TazanBack.model.Plan">
         select PlanID,UserID,Region,StartDate,EndDate,PlanDate,PlanTitle from TourPlan
