@@ -45,4 +45,7 @@
     <select id="myReviewList" parameterType="int" resultType="ion.kosa.TazanBack.model.Review">
         select * from Review where UserID = ${userID}
     </select>
+    <select id="myReviewSelect" resultType="ion.kosa.TazanBack.model.Review" parameterType="int">
+        select * from Review where PlanID = ${planID}
+    </select>
 </mapper>

@@ -1,17 +1,12 @@
 package ion.kosa.TazanBack.Service;
 
 import ion.kosa.TazanBack.DAO.reviewDAO;
-import ion.kosa.TazanBack.VO.reviewContentVO;
 import ion.kosa.TazanBack.VO.reviewVO;
 import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,6 +15,7 @@ import java.util.List;
 public class reviewServiceImpl implements  reviewService {
 
     private final reviewDAO reviewDAO;
+    private final planServiceImpl planService;
 
     @Override
     public List<reviewVO> myReviewList(int userID) {
@@ -34,9 +30,17 @@ public class reviewServiceImpl implements  reviewService {
     }
 
     @Override
+    public reviewVO myReviewSelect(int planID) {
+        Review r = reviewDAO.myReviewSelect(planID);
+        if (r == null) return null;
+        return dataToVO(r);
+    }
+
+    @Override
     public int reviewUpload(reviewVO reviewVO) {
         Review review = voToData(reviewVO);
         reviewDAO.reviewUpload(review);
+        planService.updateReviewFlag(reviewVO.getPlanID());
         return review.getReviewID();
     }
 
@@ -78,11 +82,6 @@ public class reviewServiceImpl implements  reviewService {
     public List<reviewVO> selectKeyword(String keyword,String startdate,String enddate) {
         return dataListToVOList(reviewDAO.selectKeyword(keyword,startdate,enddate));
     }
-
-//    @Override
-//    public List<reviewVO> selectDate(String startdate, String enddate) {
-//        return dataListToVOList(reviewDAO.selectDate(startdate,enddate));
-//    }
 
     @Override
     public List<reviewVO> reviewRecent() {

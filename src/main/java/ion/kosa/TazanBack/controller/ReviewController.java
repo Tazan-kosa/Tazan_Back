@@ -2,18 +2,11 @@ package ion.kosa.TazanBack.controller;
 
 
 import ion.kosa.TazanBack.Service.reviewServiceImpl;
-import ion.kosa.TazanBack.Service.userServiceImpl;
 import ion.kosa.TazanBack.VO.reviewVO;
-import ion.kosa.TazanBack.VO.tourItemVO;
-import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 
 @RestController
@@ -49,13 +42,6 @@ public class ReviewController {
     List<reviewVO> reviewList() {
         return reviewServiceImpl.reviewList();
     }
-
-    //날짜기반 검색
-//    @GetMapping("/review/selectdate/{startdate}/{enddate}")
-//    public List<reviewVO> selectdate(@PathVariable String startdate, @PathVariable String enddate){
-//        List<reviewVO> selectdate = reviewServiceImpl.selectDate(startdate,enddate);
-//        return selectdate;
-//    }
 
     //키워드 검색
     @GetMapping("/review/search/{keyword}/{startdate}/{enddate}")
@@ -100,5 +86,10 @@ public class ReviewController {
     public @ResponseBody
     List<reviewVO> reviewmanageList() {
         return reviewServiceImpl.reviewmanageList();
+    }
+
+    @GetMapping("/reviwe/reviewWrite/{planID}")
+    public reviewVO reviewWrite(@PathVariable int planID){
+        return reviewServiceImpl.myReviewSelect(planID);
     }
 }

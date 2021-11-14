@@ -1,7 +1,6 @@
 package ion.kosa.TazanBack.Service;
 
 import ion.kosa.TazanBack.VO.reviewVO;
-import ion.kosa.TazanBack.VO.tourItemVO;
 import ion.kosa.TazanBack.model.Review;
 
 import java.util.List;
@@ -20,4 +19,5 @@ public interface reviewService {
     void reviewUpdate(reviewVO reviewVO);
     List<reviewVO> myReviewList(int userID);
     List<reviewVO> reviewmanageList();
+    reviewVO myReviewSelect(int planID);
 }

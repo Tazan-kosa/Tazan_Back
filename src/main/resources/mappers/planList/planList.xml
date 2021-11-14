@@ -17,7 +17,7 @@
     </select>
 
     <select id="selectMyPlan" resultType="ion.kosa.TazanBack.model.Plan" parameterType="int">
-        select * from TourPlan where UserID = ${userID}
+        select * from TourPlan where UserID = ${userID} And ReivewFlag = 0;
     </select>
     <select id="planList" resultType="ion.kosa.TazanBack.model.Plan">
         select PlanID,UserID,Region,StartDate,EndDate,PlanDate,PlanTitle from TourPlan
@@ -25,4 +25,9 @@
     <delete id="deletePlan" parameterType="int">
         delete from TourPlan where PlanID = ${planID}
     </delete>
+    <update id="updateReviewFlag" parameterType="int">
+        update TourPlan
+        set ReviewFlag = 1
+        where PlanID = ${planID}
+    </update>
 </mapper>
