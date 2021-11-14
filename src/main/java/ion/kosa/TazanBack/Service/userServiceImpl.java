@@ -52,6 +52,11 @@ public class userServiceImpl implements userService {
         return dataToVO(users);
     }
 
+    @Transactional
+    public void userdelete(Long userID){
+        userDAO.deleteById(userID);
+    }
+
     public List<userVO>dataToVO(List<User> users){
         Iterator iterator=users.iterator();
         List<userVO> vo = new ArrayList<>();

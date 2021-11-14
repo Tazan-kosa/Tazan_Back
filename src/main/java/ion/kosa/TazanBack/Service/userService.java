@@ -17,5 +17,5 @@ public interface userService {
     public String usernameCheck(ReduplicationDto reduplicationDto);
     public String nicknameCheck(ReduplicationDto reduplicationDto);
     public List<userVO> usermanageList();
-
+    void userdelete(Long userID);
 }

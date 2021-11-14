@@ -36,4 +36,9 @@ public class UserController {
     private List<userVO> usermanageList(){
         return userService.usermanageList();
     }
+
+    @DeleteMapping("/user/deleteUser/{userID}")
+    public void reviewDelete(@PathVariable Long userID) {
+        userService.userdelete(userID);
+    }
 }
