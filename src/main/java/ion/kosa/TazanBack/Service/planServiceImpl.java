@@ -111,6 +111,7 @@ public class planServiceImpl implements planService {
         vo.setEndDate(plan.getEndDate());
         vo.setPlanDate(plan.getPlanDate());
         vo.setPlanTitle(plan.getPlanTitle());
+        vo.setReviewFalg(plan.getReviewFlag());
         String no=plan.getPlanList();
         String noSize=plan.getPlanSize();
 

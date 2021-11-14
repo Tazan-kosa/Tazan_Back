@@ -16,4 +16,5 @@ public class planVO {
     private Date planDate;
     private String planTitle;
     private ArrayList<ArrayList<tourItemVO>> planList;
+    private char reviewFalg;
 }
