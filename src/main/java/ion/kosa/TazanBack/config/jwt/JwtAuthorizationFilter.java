@@ -48,7 +48,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
         //서명확인
         if(email != null){
-            User userEntity = userDAO.findByName(email);
+            User userEntity = userDAO.findByEmail(email);
             PrincipalDetails principalDetails = new PrincipalDetails(userEntity);
             Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails,null,principalDetails.getAuthorities());
 

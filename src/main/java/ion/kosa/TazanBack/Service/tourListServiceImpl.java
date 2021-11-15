@@ -5,6 +5,7 @@ import ion.kosa.TazanBack.DAO.tourListDAO;
 import ion.kosa.TazanBack.VO.tourItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class tourListServiceImpl implements tourListService{
     @Override
     public tourItemVO selectTourID(int tourID) {
         return tourListDAO.selectTourID(tourID);
+    }
+
+    @Transactional
+    public void tourDelete(int tourID){
+        tourListDAO.tourDelete(tourID);
     }
 }
