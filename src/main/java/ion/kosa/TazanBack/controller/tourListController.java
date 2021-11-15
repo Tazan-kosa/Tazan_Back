@@ -53,4 +53,9 @@ public class tourListController {
     public void tourDelete(@PathVariable int tourID) {
         service.tourDelete(tourID);
     }
+
+    @GetMapping("/tour/getTourId/{tourID}")
+    tourItemVO selectTourID(@PathVariable int tourID){
+        return service.selectTourID(tourID);
+    }
 }
