@@ -11,4 +11,5 @@ public interface tourListService {
 //    List<tourItemVO> selectDate(String startdate,String enddate);
     tourItemVO selectTourID(int tourID);
     List<tourItemVO> searchRegion(String keyword);
+    void tourDelete(int tourID);
 }
