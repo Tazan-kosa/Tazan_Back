@@ -1,6 +1,7 @@
 package ion.kosa.TazanBack.Service;
 
 import ion.kosa.TazanBack.DAO.reviewDAO;
+import ion.kosa.TazanBack.VO.commentVO;
 import ion.kosa.TazanBack.VO.reviewVO;
 import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ public class reviewServiceImpl implements  reviewService {
 
     private final reviewDAO reviewDAO;
     private final planServiceImpl planService;
+    private final commentServiceImpl commentService;
 
     @Override
     public List<reviewVO> myReviewList(int userID) {
@@ -46,7 +48,10 @@ public class reviewServiceImpl implements  reviewService {
 
     @Override
     public reviewVO reviewDownload(int reviewID) {
-        return dataToVO(reviewDAO.reviewDownload(reviewID));
+        reviewVO rv = dataToVO(reviewDAO.reviewDownload(reviewID));
+        List<commentVO> commentVO = commentService.selectComment(reviewID);
+        rv.setCommentVO(commentVO);
+        return rv;
     }
 
     @Override

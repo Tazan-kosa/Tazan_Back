@@ -21,4 +21,5 @@ public class reviewVO {
     private String reviewThumbnail;
     private String reviewTitle;
     private String nickName;
+    private List<commentVO> commentVO;
 }

@@ -11,4 +11,5 @@ public class Comment {
     private int ReviewID;
     private Date CommentDate;
     private String CommentContent;
+    private String nickName;
 }

@@ -14,7 +14,7 @@ public class commentController {
 
     private final commentServiceImpl commentService;
 
-    @GetMapping("/comment/create")
+    @PostMapping("/comment/create")
     public void createComment(@RequestBody commentVO commentVO){
         commentService.createComment(commentVO);
     }

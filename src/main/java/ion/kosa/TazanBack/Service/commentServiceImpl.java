@@ -20,6 +20,7 @@ public class commentServiceImpl implements commentService{
         commentVO.setReviewID(comment.getReviewID());
         commentVO.setCommentDate(comment.getCommentDate());
         commentVO.setCommentContent(comment.getCommentContent());
+        commentVO.setNickName(comment.getNickName());
         return commentVO;
     }
 

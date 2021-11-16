@@ -25,13 +25,6 @@ public class ReviewController {
         return reviewServiceImpl.reviewUpload(reviewVO);
     }
 
-    //list
-    @GetMapping("/review/download")
-    public ResponseEntity reviewDownload(int reviewID) {
-        reviewServiceImpl.reviewDownload(reviewID);
-        return null;
-    }
-
     //키워드 검색
     @GetMapping("/review/{reviewid}")
     public @ResponseBody
