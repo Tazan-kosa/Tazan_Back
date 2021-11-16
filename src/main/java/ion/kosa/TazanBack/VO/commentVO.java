@@ -8,6 +8,7 @@ import java.util.Date;
 public class commentVO {
     private int commentID;
     private int userID;
+    private String nickName;
     private int reviewID;
     private Date commentDate;
     private String commentContent;
