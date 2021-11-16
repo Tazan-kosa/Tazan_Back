@@ -50,7 +50,8 @@ public class reviewServiceImpl implements  reviewService {
     public reviewVO reviewDownload(int reviewID) {
         reviewVO rv = dataToVO(reviewDAO.reviewDownload(reviewID));
         List<commentVO> commentVO = commentService.selectComment(reviewID);
-        rv.setCommentVO(commentVO);
+        if(commentVO == null) rv.setCommentVO(null);
+        else rv.setCommentVO(commentVO);
         return rv;
     }
 

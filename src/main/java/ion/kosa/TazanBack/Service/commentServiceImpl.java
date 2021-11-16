@@ -6,6 +6,7 @@ import ion.kosa.TazanBack.model.Comment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -18,7 +19,9 @@ public class commentServiceImpl implements commentService{
         commentVO.setCommentID(comment.getCommentID());
         commentVO.setUserID(comment.getUserID());
         commentVO.setReviewID(comment.getReviewID());
-        commentVO.setCommentDate(comment.getCommentDate());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = simpleDateFormat.format(comment.getCommentDate());
+        commentVO.setCommentDate(date);
         commentVO.setCommentContent(comment.getCommentContent());
         commentVO.setNickName(comment.getNickName());
         return commentVO;
@@ -29,25 +32,26 @@ public class commentServiceImpl implements commentService{
         Comment comment = new Comment();
         comment.setUserID(commentVO.getUserID());
         comment.setReviewID(commentVO.getReviewID());
-        comment.setCommentDate(commentVO.getCommentDate());
+        Date nowDate = new Date();
+        comment.setCommentDate(nowDate);
         comment.setCommentContent(commentVO.getCommentContent());
         return comment;
     }
 
     @Override
-    public void createComment(commentVO commentVO) {
-        commentDAO.createComment(VOToData(commentVO));
+    public commentVO createComment(commentVO commentVO) {
+        Comment comment = VOToData(commentVO);
+        commentDAO.createComment(comment);
+        return dataToVO(comment);
     }
 
     @Override
     public List<commentVO> selectComment(int reviewID) {
         List<Comment> comments = commentDAO.selectComment(reviewID);
-        System.out.println(comments.get(0));
         List<commentVO> commentsVO = new ArrayList();
         for (Comment c : comments) {
             commentsVO.add(dataToVO(c));
         }
-        System.out.println(commentsVO.get(0));
         return commentsVO;
     }
 }
