@@ -12,5 +12,5 @@ public interface tourListDAO {
     public List<tourItemVO> selectKeyword(String keyword,String startdate,String enddate);
     List<tourItemVO> searchRegion(String keyword);
     public tourItemVO selectTourID(int tourID);
-
+    void tourDelete(int tourID);
 }
