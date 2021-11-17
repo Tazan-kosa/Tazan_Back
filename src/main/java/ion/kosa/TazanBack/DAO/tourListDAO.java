@@ -13,4 +13,6 @@ public interface tourListDAO {
     List<tourItemVO> searchRegion(String keyword);
     public tourItemVO selectTourID(int tourID);
     void tourDelete(int tourID);
+    void updateTour(tourItemVO tourItemVO);
+    void insertTour(tourItemVO tourItemVO);
 }

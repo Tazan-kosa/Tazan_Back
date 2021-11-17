@@ -45,4 +45,17 @@ public class tourListServiceImpl implements tourListService{
     public void tourDelete(int tourID){
         tourListDAO.tourDelete(tourID);
     }
+
+    @Override
+    public void updateTour(tourItemVO tourItemVO) {
+        tourListDAO.updateTour(tourItemVO);
+    }
+
+    @Override
+    public void insertTour(tourItemVO tourItemVO) {
+        tourItemVO.setLikes(0);
+        tourItemVO.setHeight(6);
+        tourListDAO.insertTour(tourItemVO);
+    }
+
 }

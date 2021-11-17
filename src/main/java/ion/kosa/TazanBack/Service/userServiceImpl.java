@@ -57,6 +57,19 @@ public class userServiceImpl implements userService {
         userDAO.deleteById(userID);
     }
 
+    @Override
+    public userVO userfindID(Long userID) {
+        userVO vo = new userVO();
+        User user = userDAO.findByUserID(userID);
+        vo.setUserID(user.getUserID());
+        vo.setNickName(user.getNickName());
+        vo.setPhoneNumber(user.getPhoneNumber());
+        vo.setEmail(user.getEmail());
+        vo.setAuth(user.getAuth());
+        vo.setName(user.getName());
+        return vo;
+    }
+
     public List<userVO>dataToVO(List<User> users){
         Iterator iterator=users.iterator();
         List<userVO> vo = new ArrayList<>();
@@ -74,4 +87,5 @@ public class userServiceImpl implements userService {
         }
         return vo;
     }
+
 }
