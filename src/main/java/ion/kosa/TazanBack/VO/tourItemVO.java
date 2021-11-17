@@ -7,20 +7,20 @@ import java.util.Date;
 
 @Data
 public class tourItemVO {
-    private int TourId;
-    private String Address;
-    private String TourRegion;
-    private String Tag1,Tag2;
+    private int tourId;
+    private String address;
+    private String tourRegion;
+    private String tag1,tag2;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private Date EndDate;
+    private Date endDate;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private Date StartDate;
+    private Date startDate;
 
-    private String Img;
-    private float Latitude,Longitude;
-    private int Height;
-    private String Contact,Title,URL;
-    private int Likes;
+    private String img;
+    private float latitude,longitude;
+    private int height;
+    private String contact,title,url;
+    private int likes;
 }

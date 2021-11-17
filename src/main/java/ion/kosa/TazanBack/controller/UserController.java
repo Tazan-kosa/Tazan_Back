@@ -41,4 +41,9 @@ public class UserController {
     public void reviewDelete(@PathVariable Long userID) {
         userService.userdelete(userID);
     }
+
+    @GetMapping("/user/getUser/{userID}")
+    private userVO userfindID(@PathVariable Long userID){
+        return userService.userfindID(userID);
+    }
 }

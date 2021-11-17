@@ -28,6 +28,11 @@ public class planServiceImpl implements planService {
         return plan.getPlanID();
     }
 
+    @Override
+    public void planUpdate(planCreateVO planCreateVO) {
+        planDAO.planUpdate(voToData(planCreateVO));
+    }
+
     public List<planVO> planList(){
         List<Plan> plans = planDAO.planList();
         Iterator iterator = plans.iterator();
@@ -105,6 +110,8 @@ public class planServiceImpl implements planService {
     public void deleteReviewFlag(int planID) {
         planDAO.deleteReviewFlag(planID);
     }
+
+
 
     @Override
     public planVO dataToVO(Plan plan) {

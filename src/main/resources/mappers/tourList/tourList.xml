@@ -24,4 +24,12 @@
     <delete id="tourDelete" parameterType="int">
         delete from Tour where TourID = ${tourID}
     </delete>
+    <update id="updateTour" parameterType="ion.kosa.TazanBack.VO.tourItemVO">
+        update Tour
+        set TourID = #{tourId},Address = #{address},StartDate = #{startDate} ,EndDate = #{endDate},TourRegion = #{tourRegion} ,Tag1 = #{tag1} ,Tag2 = #{tag2}, Img=#{img},Latitude=#{latitude},Longitude=#{longitude},Height=#{height},Contact=#{contact},Title=#{title},URL=#{url},Likes=#{likes}
+        where TourID = #{tourId}
+    </update>
+    <insert id="insertTour" parameterType="ion.kosa.TazanBack.VO.tourItemVO">
+        insert into Tour VALUES(#{tourId},#{address},#{tourRegion},#{tag1},#{tag2},#{endDate},#{startDate},#{img},#{latitude},#{longitude},#{height},#{contact},#{title},#{url},#{likes})
+    </insert>
 </mapper>
