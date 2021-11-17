@@ -54,4 +54,14 @@ public class commentServiceImpl implements commentService{
         }
         return commentsVO;
     }
+
+    @Override
+    public void deleteComment(int commentID) {
+        commentDAO.deleteComment(commentID);
+    }
+
+    @Override
+    public void updateComment(commentVO commentVO) {
+        commentDAO.updateComment(commentVO);
+    }
 }

@@ -13,5 +13,12 @@
     <select id="selectComment" parameterType="int" resultType="ion.kosa.TazanBack.model.Comment">
         select rc.*, tu.nickname  from ReviewComment rc, TourUser tu where rc.ReviewID = ${reviewID} AND rc.UserID = tu.UserID order by commentDate
     </select>
-
+    <update id="updateComment" parameterType="ion.kosa.TazanBack.VO.commentVO">
+        update ReviewComment
+        set commentcontent = #{commentContent}
+        where commentID = #{commentID}
+    </update>
+    <delete id="deleteComment" parameterType="int">
+        delete from ReviewComment where commentID = ${commentID}
+    </delete>
 </mapper>

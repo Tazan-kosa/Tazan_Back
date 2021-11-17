@@ -10,4 +10,6 @@ public interface commentService {
     Comment VOToData(commentVO commentVo);
     commentVO createComment(commentVO commentVO);
     List<commentVO> selectComment(int ReviewID);
+    void deleteComment(int commentID);
+    void updateComment(commentVO commentVO);
 }
