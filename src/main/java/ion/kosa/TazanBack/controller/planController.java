@@ -47,4 +47,9 @@ public class planController {
         return planServiceImpl.planList();
     }
 
+    @PutMapping("/plan/planUpdate")
+    public void planUpdate(@RequestBody planCreateVO planCreateVO){
+        planServiceImpl.planUpdate(planCreateVO);
+    }
+
 }
