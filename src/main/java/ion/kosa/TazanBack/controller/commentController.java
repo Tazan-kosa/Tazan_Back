@@ -40,9 +40,8 @@ public class commentController {
 
     @GetMapping("/admin/comment/selectAll")
     public @ResponseBody
-    List<commentAllVO> selectAllComment(@RequestBody UserRoleDTO userRole){
-        String role = userRole.getUserRole();
-        if(role.equals("ROLE_ADMIN")) return commentService.selectAllComment();
-        return null;
+    List<commentAllVO> selectAllComment(@RequestHeader(value="Auth", required = false) String userRole){
+        if(userRole == null) return null;
+        return commentService.selectAllComment();
     }
 }
