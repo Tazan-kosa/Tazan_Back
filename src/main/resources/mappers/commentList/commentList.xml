@@ -21,4 +21,7 @@
     <delete id="deleteComment" parameterType="int">
         delete from ReviewComment where commentID = ${commentID}
     </delete>
+    <select id="selectAllComment" resultType="ion.kosa.TazanBack.VO.commentAllVO">
+        select rc.*, r.reviewTitle, tu.nickname from ReviewComment rc, Review r, TourUser tu where rc.reviewID = r.reviewID And rc.userID = tu.userID order by rc.commentDate
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package ion.kosa.TazanBack.Service;
 
+import ion.kosa.TazanBack.VO.commentAllVO;
 import ion.kosa.TazanBack.VO.commentVO;
 import ion.kosa.TazanBack.model.Comment;
 
@@ -12,4 +13,5 @@ public interface commentService {
     List<commentVO> selectComment(int ReviewID);
     void deleteComment(int commentID);
     void updateComment(commentVO commentVO);
+    List<commentAllVO> selectAllComment();
 }

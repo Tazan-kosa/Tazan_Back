@@ -1,6 +1,7 @@
 package ion.kosa.TazanBack.Service;
 
 import ion.kosa.TazanBack.DAO.commentDAO;
+import ion.kosa.TazanBack.VO.commentAllVO;
 import ion.kosa.TazanBack.VO.commentVO;
 import ion.kosa.TazanBack.model.Comment;
 import lombok.RequiredArgsConstructor;
@@ -63,5 +64,10 @@ public class commentServiceImpl implements commentService{
     @Override
     public void updateComment(commentVO commentVO) {
         commentDAO.updateComment(commentVO);
+    }
+
+    @Override
+    public List<commentAllVO> selectAllComment() {
+        return commentDAO.selectAllComment();
     }
 }
