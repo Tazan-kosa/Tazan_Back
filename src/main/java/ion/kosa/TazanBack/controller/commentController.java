@@ -1,12 +1,15 @@
 package ion.kosa.TazanBack.controller;
 
 import ion.kosa.TazanBack.Service.commentServiceImpl;
+import ion.kosa.TazanBack.VO.commentAllVO;
 import ion.kosa.TazanBack.VO.commentVO;
+import ion.kosa.TazanBack.model.dto.UserRoleDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @CrossOrigin
@@ -33,5 +36,13 @@ public class commentController {
     @PutMapping("/comment/update")
     public void updateComment(@RequestBody commentVO commentVO){
         commentService.updateComment(commentVO);
+    }
+
+    @GetMapping("/admin/comment/selectAll")
+    public @ResponseBody
+    List<commentAllVO> selectAllComment(@RequestBody UserRoleDTO userRole){
+        String role = userRole.getUserRole();
+        if(role.equals("ROLE_ADMIN")) return commentService.selectAllComment();
+        return null;
     }
 }
