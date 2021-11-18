@@ -1,10 +1,10 @@
 package ion.kosa.TazanBack.DAO;
 
+import ion.kosa.TazanBack.VO.commentAllVO;
 import ion.kosa.TazanBack.VO.commentVO;
 import ion.kosa.TazanBack.model.Comment;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Mapper
@@ -13,4 +13,5 @@ public interface commentDAO {
     List<Comment> selectComment(int ReviewID);
     void deleteComment(int commentID);
     void updateComment(commentVO commentVO);
+    List<commentAllVO> selectAllComment();
 }
