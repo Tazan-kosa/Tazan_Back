@@ -8,6 +8,8 @@ import java.util.List;
 public interface commentService {
     commentVO dataToVO(Comment comment);
     Comment VOToData(commentVO commentVo);
-    void createComment(commentVO commentVO);
+    commentVO createComment(commentVO commentVO);
     List<commentVO> selectComment(int ReviewID);
+    void deleteComment(int commentID);
+    void updateComment(commentVO commentVO);
 }

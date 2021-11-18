@@ -10,6 +10,6 @@ public class commentVO {
     private int userID;
     private String nickName;
     private int reviewID;
-    private Date commentDate;
+    private String commentDate;
     private String commentContent;
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface reviewDAO {
     Review reviewDownload(int reviewID);
-    int reviewUpload(Review review);
+    void reviewUpload(Review review);
     List<Review> reviewList();
     List<Review> reviewmanageList();
     List<Review> selectKeyword(String keyword,String startdate,String enddate);
