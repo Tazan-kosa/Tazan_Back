@@ -33,7 +33,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
 
         String jwtHeader = request.getHeader("Authorization");
-        System.out.println("Header: "+jwtHeader);
+        //System.out.println("Header: "+jwtHeader);
 
         //header 있는지 확인
         if(jwtHeader == null|| !jwtHeader.startsWith("Bearer")){
