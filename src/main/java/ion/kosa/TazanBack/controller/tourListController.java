@@ -1,6 +1,7 @@
 package ion.kosa.TazanBack.controller;
 
 import ion.kosa.TazanBack.Service.tourListServiceImpl;
+import ion.kosa.TazanBack.VO.reviewVO;
 import ion.kosa.TazanBack.VO.tourItemVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -57,5 +58,15 @@ public class tourListController {
     @GetMapping("/tour/getTourId/{tourID}")
     tourItemVO selectTourID(@PathVariable int tourID){
         return service.selectTourID(tourID);
+    }
+
+    @PutMapping("/tour/updateTour")
+    public void updateTour(@RequestBody tourItemVO tourItemVO) {
+        service.updateTour(tourItemVO);
+    }
+
+    @PostMapping("/tour/insertTour")
+    public void insertTour(@RequestBody tourItemVO tourItemVO){
+        service.insertTour(tourItemVO);
     }
 }
