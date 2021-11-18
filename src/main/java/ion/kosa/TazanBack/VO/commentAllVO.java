@@ -13,4 +13,5 @@ public class commentAllVO {
     private String reviewTitle;
     private String commentDate;
     private String commentContent;
+    private int reportCount;
 }
