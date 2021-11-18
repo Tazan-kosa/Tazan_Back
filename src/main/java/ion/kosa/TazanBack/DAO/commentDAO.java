@@ -1,6 +1,7 @@
 package ion.kosa.TazanBack.DAO;
 
 import ion.kosa.TazanBack.VO.commentAllVO;
+import ion.kosa.TazanBack.VO.commentReportVO;
 import ion.kosa.TazanBack.VO.commentVO;
 import ion.kosa.TazanBack.model.Comment;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,4 +15,6 @@ public interface commentDAO {
     void deleteComment(int commentID);
     void updateComment(commentVO commentVO);
     List<commentAllVO> selectAllComment();
+    void updateReportCount(int commentID);
+    void insertReportFlag(commentReportVO commentReportVO);
 }
