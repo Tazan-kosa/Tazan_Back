@@ -20,7 +20,7 @@ public class commentController {
 
     private final commentServiceImpl commentService;
 
-    @PostMapping("/comment/create")
+    @PostMapping("/api/user/comment/create")
     public @ResponseBody commentVO createComment(@RequestBody commentVO commentVO){
         return commentService.createComment(commentVO);
     }
@@ -30,24 +30,24 @@ public class commentController {
         return commentService.selectComment(reviewID);
     }
 
-    @DeleteMapping("/comment/delete/{commentID}")
+    @DeleteMapping("/api/user/comment/delete/{commentID}")
     public void deleteComment(@PathVariable int commentID){
         commentService.deleteComment(commentID);
     }
 
-    @PutMapping("/comment/update")
+    @PutMapping("/api/user/comment/update")
     public void updateComment(@RequestBody commentVO commentVO){
         commentService.updateComment(commentVO);
     }
 
-    @GetMapping("/admin/comment/selectAll")
+    @GetMapping("/api/admin/comment/selectAll")
     public @ResponseBody
     List<commentAllVO> selectAllComment(@RequestHeader(value="Auth", required = false) String userRole){
         if(userRole == null) return null;
         return commentService.selectAllComment();
     }
 
-    @GetMapping("/comment/report/update/{commentID}/{userID}")
+    @GetMapping("/api/user/comment/report/update/{commentID}/{userID}")
     public void updateReportCount(@PathVariable int commentID, @PathVariable int userID){
         commentReportVO commentReportVO = new commentReportVO();
         commentReportVO.setCommentID(commentID);
