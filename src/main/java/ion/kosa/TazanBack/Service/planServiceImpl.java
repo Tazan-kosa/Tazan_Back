@@ -59,6 +59,7 @@ public class planServiceImpl implements planService {
         Plan plan = new Plan();
 
         plan.setEndDate(planVO.getEndDate());
+        plan.setPlanID(planVO.getPlanID());
         plan.setStartDate(planVO.getStartDate());
         plan.setPlanDate(new Date());
         plan.setUserID(planVO.getUserID());

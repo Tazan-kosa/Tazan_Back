@@ -69,4 +69,14 @@ public class tourListController {
     public void insertTour(@RequestBody tourItemVO tourItemVO){
         service.insertTour(tourItemVO);
     }
+
+    @PutMapping("/tour/updateTourLikePoint/{tourID}")
+    public void updateTourLikePoint(@PathVariable int tourID) {
+        service.updateTourLikePoint(tourID);
+    }
+
+    @PutMapping("/tour/deleteTourLikePoint/{tourID}")
+    public void deleteTourLikePoint(@PathVariable int tourID) {
+        service.deleteTourLikePoint(tourID);
+    }
 }

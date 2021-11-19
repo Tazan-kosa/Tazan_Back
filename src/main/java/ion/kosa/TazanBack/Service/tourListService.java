@@ -14,4 +14,6 @@ public interface tourListService {
     void tourDelete(int tourID);
     void updateTour(tourItemVO tourItemVO);
     void insertTour(tourItemVO tourItemVO);
+    void updateTourLikePoint(int tourID);
+    void deleteTourLikePoint(int tourID);
 }

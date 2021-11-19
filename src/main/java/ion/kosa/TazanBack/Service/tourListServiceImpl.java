@@ -58,4 +58,14 @@ public class tourListServiceImpl implements tourListService{
         tourListDAO.insertTour(tourItemVO);
     }
 
+    @Override
+    public void updateTourLikePoint(int tourID) {
+        tourListDAO.updateTourLikePoint(tourID);
+    }
+
+    @Override
+    public void deleteTourLikePoint(int tourID) {
+        tourListDAO.deleteTourLikePoint(tourID);
+    }
+
 }
