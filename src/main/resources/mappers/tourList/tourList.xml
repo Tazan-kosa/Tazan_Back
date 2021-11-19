@@ -32,4 +32,10 @@
     <insert id="insertTour" parameterType="ion.kosa.TazanBack.VO.tourItemVO">
         insert into Tour VALUES(#{tourId},#{address},#{tourRegion},#{tag1},#{tag2},#{endDate},#{startDate},#{img},#{latitude},#{longitude},#{height},#{contact},#{title},#{url},#{likes})
     </insert>
+    <update id="updateTourLikePoint" parameterType="int">
+        update Tour set Likes=(select likes from Tour where tourid=${tourID})+1 where TourID = ${tourID}
+    </update>
+    <update id="deleteTourLikePoint" parameterType="int">
+        update Tour set Likes=(select likes from Tour where tourid=${tourID})-1 where TourID = ${tourID}
+    </update>
 </mapper>
