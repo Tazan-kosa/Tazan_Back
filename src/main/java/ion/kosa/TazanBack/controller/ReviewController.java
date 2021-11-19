@@ -61,29 +61,29 @@ public class ReviewController {
     }
 
     // Delete Review
-    @DeleteMapping("/reviewDelete/{reviewID}/{planID}")
+    @DeleteMapping("/api/user/reviewDelete/{reviewID}/{planID}")
     public void reviewDelete(@PathVariable int reviewID, @PathVariable int planID) {
         planServiceImpl.deleteReviewFlag(planID);
         reviewServiceImpl.reviewDelete(reviewID);
     }
 
-    @PutMapping("/review/update")
+    @PutMapping("/api/user/review/update")
     public void reviewUpdate(@RequestBody reviewVO reviewVO) {
         reviewServiceImpl.reviewUpdate(reviewVO);
     }
 
-    @GetMapping("/review/myLiviewList/{userID}")
+    @GetMapping("/api/user/review/myLiviewList/{userID}")
     public List<reviewVO> selectdate(@PathVariable int userID) {
         return reviewServiceImpl.myReviewList(userID);
     }
 
-    @GetMapping("/review/reviewmanageList")
+    @GetMapping("/api/admin/review/reviewmanageList")
     public @ResponseBody
     List<reviewVO> reviewmanageList() {
         return reviewServiceImpl.reviewmanageList();
     }
 
-    @GetMapping("/review/reviewWrite/{planID}")
+    @GetMapping("api/user/review/reviewWrite/{planID}")
     public reviewVO reviewWrite(@PathVariable int planID){
         return reviewServiceImpl.myReviewSelect(planID);
     }
