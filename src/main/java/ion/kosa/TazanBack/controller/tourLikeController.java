@@ -16,7 +16,7 @@ public class tourLikeController {
     tourLikeServiceImpl service;
 
 
-    @GetMapping("/tour/like/{userID}")
+    @GetMapping("/api/user/tour/like/{userID}")
     public @ResponseBody
     List<tourLikeVO> tourLikeList(@PathVariable int userID){
 
@@ -24,13 +24,13 @@ public class tourLikeController {
     }
 
 
-    @DeleteMapping("/tour/deleteTourLike/{tourLikeID}")
+    @DeleteMapping("/api/user/tour/deleteTourLike/{tourLikeID}")
     public void tourLikedelete(@PathVariable int tourLikeID) {
         service.tourLikedelete(tourLikeID);
     }
 
 
-    @PostMapping("/tour/insertTourLike")
+    @PostMapping("/api/user/tour/insertTourLike")
     public int tourLikeinsert(@RequestBody tourLikeVO tourLikeVO){
         return service.tourLikeinsert(tourLikeVO);
     }
