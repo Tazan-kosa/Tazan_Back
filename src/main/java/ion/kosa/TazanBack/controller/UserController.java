@@ -32,17 +32,17 @@ public class UserController {
         return new ResponseEntity<>(userService.join(user), HttpStatus.CREATED);
     }
 
-    @GetMapping("/user/userList")
+    @GetMapping("/api/admin/user/userList")
     private List<userVO> usermanageList(){
         return userService.usermanageList();
     }
 
-    @DeleteMapping("/user/deleteUser/{userID}")
+    @DeleteMapping("/api/admin/user/deleteUser/{userID}")
     public void reviewDelete(@PathVariable Long userID) {
         userService.userdelete(userID);
     }
 
-    @GetMapping("/user/getUser/{userID}")
+    @GetMapping("/api/admin/user/getUser/{userID}")
     private userVO userfindID(@PathVariable Long userID){
         return userService.userfindID(userID);
     }

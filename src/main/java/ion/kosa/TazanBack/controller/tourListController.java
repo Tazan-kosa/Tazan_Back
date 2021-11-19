@@ -28,7 +28,7 @@ public class tourListController {
         return keywordTourList;
     }
 
-    @GetMapping("/search/{keyword}")
+    @GetMapping("/api/user/search/{keyword}")
     public @ResponseBody
     List<tourItemVO> searchRegion(@PathVariable String keyword){
 
@@ -44,38 +44,38 @@ public class tourListController {
     }
 
     //Top 4 TourList
-    @GetMapping("/testdbTopFour")
+    @GetMapping("/tourListTopFour")
     public @ResponseBody    List<tourItemVO> selectTopFour(){
         List<tourItemVO> fourTourList = service.selectTopFour();
         return fourTourList;
     }
 
-    @DeleteMapping("/tour/deleteTour/{tourID}")
+    @DeleteMapping("/api/admin/tour/deleteTour/{tourID}")
     public void tourDelete(@PathVariable int tourID) {
         service.tourDelete(tourID);
     }
 
-    @GetMapping("/tour/getTourId/{tourID}")
+    @GetMapping("/api/admin/tour/getTourId/{tourID}")
     tourItemVO selectTourID(@PathVariable int tourID){
         return service.selectTourID(tourID);
     }
 
-    @PutMapping("/tour/updateTour")
+    @PutMapping("/api/admin/tour/updateTour")
     public void updateTour(@RequestBody tourItemVO tourItemVO) {
         service.updateTour(tourItemVO);
     }
 
-    @PostMapping("/tour/insertTour")
+    @PostMapping("/api/admin/tour/insertTour")
     public void insertTour(@RequestBody tourItemVO tourItemVO){
         service.insertTour(tourItemVO);
     }
 
-    @PutMapping("/tour/updateTourLikePoint/{tourID}")
+    @PutMapping("/api/user/tour/updateTourLikePoint/{tourID}")
     public void updateTourLikePoint(@PathVariable int tourID) {
         service.updateTourLikePoint(tourID);
     }
 
-    @PutMapping("/tour/deleteTourLikePoint/{tourID}")
+    @PutMapping("/api/user/tour/deleteTourLikePoint/{tourID}")
     public void deleteTourLikePoint(@PathVariable int tourID) {
         service.deleteTourLikePoint(tourID);
     }
