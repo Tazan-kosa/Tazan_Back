@@ -5,7 +5,6 @@ import ion.kosa.TazanBack.Service.planServiceImpl;
 import ion.kosa.TazanBack.Service.reviewServiceImpl;
 import ion.kosa.TazanBack.VO.reviewVO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class ReviewController {
     private final planServiceImpl planServiceImpl;
 
 
-    @PostMapping(value = "/review/upload")
+    @PostMapping(value = "/api/user/review/upload")
     public @ResponseBody
     int reviewUpload(@RequestBody reviewVO reviewVO) {
         return reviewServiceImpl.reviewUpload(reviewVO);
