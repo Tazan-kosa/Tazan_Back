@@ -2,6 +2,8 @@ package ion.kosa.TazanBack.Service;
 
 import ion.kosa.TazanBack.DAO.reviewDAO;
 import ion.kosa.TazanBack.VO.commentVO;
+import ion.kosa.TazanBack.VO.planVO;
+import ion.kosa.TazanBack.VO.reviewDetailVO;
 import ion.kosa.TazanBack.VO.reviewVO;
 import ion.kosa.TazanBack.model.Review;
 import lombok.RequiredArgsConstructor;
@@ -47,11 +49,16 @@ public class reviewServiceImpl implements  reviewService {
     }
 
     @Override
-    public reviewVO reviewDownload(int reviewID) {
+    public reviewDetailVO reviewDownload(int reviewID) {
         reviewVO rv = dataToVO(reviewDAO.reviewDownload(reviewID));
         List<commentVO> commentVO = commentService.selectComment(reviewID);
         rv.setCommentVO(commentVO);
-        return rv;
+        planVO p = planService.getPlan(rv.getPlanID());
+
+        reviewDetailVO rvd = new reviewDetailVO();
+        rvd.setReviewVO(rv);
+        rvd.setPlanVO(p);
+        return rvd;
     }
 
     @Override
