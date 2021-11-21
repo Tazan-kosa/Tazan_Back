@@ -3,6 +3,7 @@ package ion.kosa.TazanBack.controller;
 
 import ion.kosa.TazanBack.Service.planServiceImpl;
 import ion.kosa.TazanBack.Service.reviewServiceImpl;
+import ion.kosa.TazanBack.VO.reviewDetailVO;
 import ion.kosa.TazanBack.VO.reviewVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ReviewController {
     //키워드 검색
     @GetMapping("/review/{reviewid}")
     public @ResponseBody
-    reviewVO reviewdetail(@PathVariable int reviewid) {
+    reviewDetailVO reviewdetail(@PathVariable int reviewid) {
         return reviewServiceImpl.reviewDownload(reviewid);
     }
 
