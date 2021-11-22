@@ -31,7 +31,7 @@
 <!--        select * from Review where (TO_CHAR(StartDate,'yyyy-mm-dd')>= #{startdate} or TO_CHAR(EndDate,'yyyy-mm-dd')>= #{startdate}) and (TO_CHAR(StartDate,'yyyy-mm-dd') &lt;= #{enddate} or TO_CHAR(EndDate,'yyyy-mm-dd') &lt;= #{enddate})-->
 <!--    </select>-->
     <select id="reviewRecent" resultType="ion.kosa.TazanBack.model.Review">
-        select * FROM (select * from Review order by reviewID desc) where ROWNUM <![CDATA[ < ]]>= 4
+        select region, ReviewTitle, StartDate, EndDate, ReviewID, Reviewthumbnail FROM (select * from Review order by reviewID desc) where ROWNUM <![CDATA[ < ]]>= 4
     </select>
     <delete id="reviewDelete" parameterType="int">
         delete from Review
